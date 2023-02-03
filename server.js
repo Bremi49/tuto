@@ -14,3 +14,7 @@ app.use("/", router);
 app.listen(3001, () => {
     console.log("le serveur est demarrer")
 })
+
+//body-parser= middleware qui sécurise les envoies utilisateurs
+//cors = connexion entre le back et le front (permet de rentrer dans la base de données)
+//lien vers la route.js

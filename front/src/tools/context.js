@@ -7,3 +7,5 @@ const initialState = {
 }
 
 export {StoreContext, initialState}
+
+//définis le contexte d'utilisation

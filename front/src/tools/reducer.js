@@ -18,3 +18,5 @@ const reducer = (state, action) =>{
 }
 
 export {reducer}
+
+//Traitement des différentes actions
