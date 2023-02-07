@@ -1,4 +1,4 @@
-import {asyncQuery} from "../database.js"
+import {asyncQuery} from "../config/database.js"
 
 export default async (req,res) =>{
     const {name, mail,description, telephone} = req.body
