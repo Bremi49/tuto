@@ -5,6 +5,6 @@ import addContact from "../controllers/addContact.js"
 const router = express.Router();
 
 router.get("/", testController);
-router.get("Contact", addContact)
+router.post("/Contact", addContact)
 
 export default router;

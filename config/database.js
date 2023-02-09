@@ -5,7 +5,7 @@ export let pool  = mysql.createPool({
     host: "db.3wa.io",// on rentre l'hôte, l'adresse url où se trouve la bdd
     user: "remibouilly", // identifiant BDD
     password: "2014b48cf721fb03a60fb5316be2404e", // le password
-    database: "remibouilly_tutotest", // nom de la base de donnée
+    database: "remibouilly_projet", // nom de la base de donnée
 });
 
 
