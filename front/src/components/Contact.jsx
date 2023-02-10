@@ -16,11 +16,12 @@ const Contact = () => {
         e.preventDefault()
         axios.post(`${BASE_URL}/contact`, contact)
             .then(res => {
+                        console.log(res.data)
                 if (res.data.response) {
                     const localStorage = (data) => {
                         localStorage.setItem('response', JSON.stringify(res.data.response));
                     }
-
+            
                 }
             })
     }

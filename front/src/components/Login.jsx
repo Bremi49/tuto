@@ -1,36 +1,60 @@
-import {useEffect, useState} from "react"
-import axios from "axios"
-import {BASE_URL} from "../tools/constante.js"
+import React, { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
-    const initialState = {email:'',password:''}
-    const [info, setInfo] = useState(initialState)
-    
-    const handleChange = (e) => {
-        const {name,value} = e.target
-        setInfo({...info, [name]:value})
-    }
-    
-    const submit = (e) => {
-        e.preventDefault()
-        axios.post(`${BASE_URL}/login`,{password:info.password, email:info.email})
-            .then(res => {
-                if(res.data.response) {
-                    localStorage.setItem('jwtToken', res.data.response.token)
-                    axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.response.token
-                    setInfo(initialState)
-                }
-            })
-    }
-    
-    
-    return(
-        <form onSubmit={submit}>
-            <input type='text' name='email' value={info.email} onChange={handleChange} placeholder='email' />
-            <input type='password' name='password' value={info.password} onChange={handleChange} placeholder='password' />
-            <input type="submit" />
-        </form>
-    )
-}
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [response, setResponse] = useState(null);
 
-export default Login
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const result = await axios.post("/api/login", { email, password });
+      setResponse(result.data);
+    } catch (err) {
+      setError("Erreur lors de la connexion, veuillez réessayer");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      {error && <p className="error">{error}</p>}
+      {loading ? (
+        <p>Chargement...</p>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Adresse email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Mot de passe"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Se connecter</button>
+        </form>
+      )}
+      {response && (
+        <p>
+          Connexion réussie! Vous êtes{" "}
+          {response.admin ? "un administrateur" : "un utilisateur"}.
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default Login;
