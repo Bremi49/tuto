@@ -9,6 +9,6 @@ const router = express.Router();
 router.get("/", testController);
 router.post("/Contact", addContact);
 router.post("/CreateUser", createUser);
-router.post("/LoginUser",loginUser)
+router.post("/Login",loginUser)
 
 export default router;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {BASE_URL} from "../tools/constante.js"
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [mail, setMail] = useState("");
+  const [mdp, setMdp] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [response, setResponse] = useState(null);
@@ -14,7 +15,7 @@ const Login = () => {
     setError(null);
 
     try {
-      const result = await axios.post("/api/login", { email, password });
+      const result = await axios.post(`${BASE_URL}/login`, { mail, mdp });
       setResponse(result.data);
     } catch (err) {
       setError("Erreur lors de la connexion, veuillez réessayer");
@@ -31,17 +32,17 @@ const Login = () => {
       ) : (
         <form onSubmit={handleSubmit}>
           <input
-            type="email"
-            placeholder="Adresse email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="mail"
+            placeholder="Adresse mail"
+            value={mail}
+            onChange={(e) => setMail(e.target.value)}
             required
           />
           <input
             type="password"
             placeholder="Mot de passe"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={mdp}
+            onChange={(e) => setMdp(e.target.value)}
             required
           />
           <button type="submit">Se connecter</button>

@@ -26,7 +26,7 @@ const CreateUser = () => {
     return (
         <form onSubmit={submit}>
             <input type="email" name="mail" onChange={handleChange}  value={createUser.mail} />
-            <input type="text" name="mdp" onChange={handleChange} value={createUser.mdp} />
+            <input type="password" name="mdp" onChange={handleChange} value={createUser.mdp} />
             <select name="role" onChange={handleChange} value={createUser.role}>
                 <option value="">Sélectionnez un rôle</option>
                 <option value="superadmin">Admin+</option>

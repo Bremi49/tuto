@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Erreur from "./components/Error";
 import Contact from "./components/Contact";
 import CreateUser from "./components/createUser"
+import Login from "./components/Login"
 import Nav from "./components/Nav";
 
 
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path="*" element={<Erreur />} />
                 <Route path="/Contact" element={<Contact />} />
                 <Route path="/CreateUser" element={<CreateUser />} />
+                <Route path="/Login" element ={<Login />} />
             </Routes>
         </BrowserRouter>
     )
