@@ -29,7 +29,7 @@ const CreateUser = () => {
 
   return (
     <form onSubmit={submit}>
-      {errorMessage.message && <div style={{ color: "red" }}>{errorMessage.message}</div>}
+      {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
       <input type="email" name="mail" onChange={handleChange} value={createUser.mail} />
       <input type="password" name="mdp" onChange={handleChange} value={createUser.mdp} />
       <select name="role" onChange={handleChange} value={createUser.role}>

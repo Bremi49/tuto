@@ -29,7 +29,7 @@ export default async(req, res) => {
           if (checkEmailResult.length > 0) {
             console.log('Email déjà existant'); // Ajoutez un log pour vérifier que ce bloc est atteint
             // The email already exists, return an error response
-            return
+            return res.status(400).send({error:'Mail déja Existant'})
           }
         } catch (err) {
           console.log(err);
