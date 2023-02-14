@@ -21,6 +21,18 @@ export default async(req, res) => {
         // Handle the case where the role is not recognized
         return res.status(400).send({ error: 'Invalid role specified' });
     }
+    // Check if the email already exists in the database
+    const checkEmailSql = "SELECT id FROM Users WHERE mail = ?";
+    try {
+        const checkEmailResult = await asyncQuery(checkEmailSql, [mail]);
+        if (checkEmailResult.length > 0) {
+            // The email already exists, return an error response
+            return res.status(400).send({ error: 'Email already exists' });
+        }
+    } catch (err) {
+        console.log(err);
+        return;
+    }
     
     const sql = "INSERT INTO Users (roles_id,mail,mdp) VALUES (?,?,?)"
     try {
