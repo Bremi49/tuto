@@ -30,8 +30,8 @@ const CreateUser = () => {
   return (
     <form onSubmit={submit}>
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-      <input type="email" name="mail" onChange={handleChange} value={createUser.mail} maxLength='50'/>
-      <input type="password" name="mdp" onChange={handleChange} value={createUser.mdp} maxLength='20'/>
+      <input type="email" name="mail" onChange={handleChange} value={createUser.mail} placeholder='mail' maxLength='50' />
+      <input type="password" name="mdp" onChange={handleChange} value={createUser.mdp} placeholder='Mot de passe' maxLength='20'/>
       <select name="role" onChange={handleChange} value={createUser.role}>
         <option value="">Sélectionnez un rôle</option>
         <option value="superadmin">Admin+</option>
@@ -41,5 +41,6 @@ const CreateUser = () => {
     </form>
   );
 }
+
 
 export default CreateUser;

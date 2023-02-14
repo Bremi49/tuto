@@ -14,9 +14,9 @@ export default async(req, res) => {
     }
     
     // Vérifie le format du mot de passe
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[@#$%^&+=!]).{8,}$/;
     if (!passwordRegex.test(mdp)) {
-        return res.status(400).send({ error: 'Le mot de passe doit comporter au moins 8 caractères, dont au moins une lettre majuscule, une lettre minuscule et un chiffre.' });
+        return res.status(400).send({ error: 'Le mot de passe doit comporter au moins 8 caractères, dont au moins une lettre majuscule, une lettre minuscule, un caractères special et un chiffre.' });
     }
        // Check if the email and password meet character limits
     if (mail.length < 6 || mail.length > 50) {

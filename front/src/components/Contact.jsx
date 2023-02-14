@@ -28,10 +28,11 @@ const Contact = () => {
 
     return (
         <form onSubmit={submit}>
-            <input type="text" name="name" onChange={handleChange} value={contact.name} />
-            <input type="email" name="mail" onChange={handleChange}  value={contact.prenom} />
-            <input type="tel" name="telephone" onChange={handleChange} value={contact.telelphone} />
-            <input type="text" name="description" onChange={handleChange} value={contact.email} />
+            <input type="text" name="name" onChange={handleChange} value={contact.name}placeholder='nom' maxLength='127'/>
+            <input type="email" name="mail" onChange={handleChange}  value={contact.mail} placeholder='mail'
+            maxLength='170'/>
+            <input type="tel" name="telephone" onChange={handleChange} value={contact.telelphone} placeholder='telephone' maxLength='15'/>
+            <input type="text" name="description" onChange={handleChange} value={contact.description} placeholder='description' maxLength='1000'/>
             <input type="submit" />
         </form>
     )
