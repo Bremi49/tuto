@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
-import { generateToken } from "../config/token.js";
-import { asyncQuery } from "../config/database.js";
+import { generateToken } from "../../config/token.js";
+import { asyncQuery } from "../../config/database.js";
 
 const generateResponse = async (userDataSQL) => {
 if (!userDataSQL) {

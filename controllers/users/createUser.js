@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { asyncQuery } from "../config/database.js"
+import { asyncQuery } from "../../config/database.js"
 
 const SUPERADMIN_ROLE = 1;
 const ADMIN_ROLE = 2;
