@@ -20,7 +20,7 @@ router.post("/Login",loginUser);
 
 //Articles
 router.post("/CreateArticle", CreateArticle)
-router.get("/SelectArticle", selectArticle)
+router.get("/selectArticle", selectArticle)
 
 router.get("/admin", authMiddleware, (req, res) => {
   res.send("Bienvenue sur la page Admin !");

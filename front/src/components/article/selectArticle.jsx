@@ -2,30 +2,40 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../tools/constante.js";
 
-const SelectArticle = () => {
+const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading (true)
     axios.get(`${BASE_URL}/selectArticle`)
       .then(res => {
-        setArticles(res.data.articles);
+        console.log("API response:", res.data);
+        setArticles(res.data);
       })
       .catch(error => {
         console.error(error);
+        console.log("Erreur lors de la récupération des articles");
         setErrorMessage("Erreur lors de la récupération des articles");
-      });
+      })
+      .then(res =>{
+        setLoading(false)
+      })
   }, []);
-
+  if(isLoading){
+    return(
+    <h1>Loading...</h1>)
+  }
   return (
     <div>
-      {errorMessage && <div style={{ color: "purple" }}>{errorMessage}</div>}
+      {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
       <ul>
-        {articles.map(article => (
-          <li key={article.id}>
-            <h2>{article.name}</h2>
-            <p>{article.description}</p>
-            <p>Publié le {new Date(article.publication_date).toLocaleDateString()}</p>
+        {articles.map(articles => (
+          <li key={articles.id}>
+            <h2>titre: {articles.name}</h2>
+            <p>Description: {articles.description}</p>
+            <p>Publié le {new Date(articles.publication_date).toLocaleDateString("fr-FR")}</p>
           </li>
         ))}
       </ul>
@@ -33,4 +43,4 @@ const SelectArticle = () => {
   );
 };
 
-export default SelectArticle;
+export default ArticlesList;
