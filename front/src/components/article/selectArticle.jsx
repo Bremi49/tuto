@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../tools/constante.js";
 
-const ArticlesList = () => {
+const SelectArticle = () => {
   const [articles, setArticles] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setLoading] = useState(true)
@@ -25,13 +25,13 @@ const ArticlesList = () => {
   }, []);
   if(isLoading){
     return(
-    <h1>Loading...</h1>)
-  }
+    <h1>Loading...</h1>
+    )}
   return (
     <div>
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
       <ul>
-        {articles.map(articles => (
+        {articles.response.map(articles => (
           <li key={articles.id}>
             <h2>titre: {articles.name}</h2>
             <p>Description: {articles.description}</p>
@@ -43,4 +43,4 @@ const ArticlesList = () => {
   );
 };
 
-export default ArticlesList;
+export default SelectArticle;
