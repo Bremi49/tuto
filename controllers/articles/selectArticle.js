@@ -1,21 +1,29 @@
 import { asyncQuery } from "../../config/database.js"
 
 export default async (req, res) => {
-   const { id } = req.params;
-
-  // Fetch the article from the database
-  const sql = "SELECT * FROM Articles";
- 
+  const { id } = req.params;
 
   try {
-    const result = await asyncQuery(sql);
-     console.log(result);
-    return res.status(200).send({ response: result });
-    if (result.length === 0) {
-      return res.status(404).send({ error: 'Article non trouvé' });
+    // Si un identifiant d'article est fourni, sélectionnez un seul article
+    let sql = "SELECT * FROM Articles";
+    let values = [];
+    if (id) {
+      sql += " WHERE id = ?";
+      values = [id];
     }
 
+    // Exécuter la requête SQL pour récupérer les articles de la base de données
+    const result = await asyncQuery(sql, values);
 
+    if (result.length === 0) {
+      return res.status(404).send({ error: 'Aucun article trouvé' });
+    } else if (id) {
+       
+      return res.status(200).send({ response: result[0] });
+    } else {
+      console.log(result)
+      return res.status(200).send({ response: result });
+    }
   } catch (error) {
     console.log(error);
     return res.status(500).send({ error: 'Erreur interne du serveur' });

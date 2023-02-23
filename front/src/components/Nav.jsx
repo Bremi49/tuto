@@ -25,6 +25,16 @@ const Nav = (props) => {
             contact
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/createArticle">
+          creation d'article
+          </NavLink>
+        </li>
+        <li>
+        <NavLink to ="/selectArticle">
+        Article
+        </NavLink>
+        </li>
       </ul>
     </nav>
   );
