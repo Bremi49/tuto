@@ -14,6 +14,9 @@ import SelectArticle from "../controllers/articles/selectArticle.js"
 import DeleteArticle from "../controllers/articles/deleteArticle.js"
 import UpdateArticle from "../controllers/articles/updateArticle.js"
 
+//Reservation
+import CreateReservation from "../controllers/reservation/createReservation.js"
+
 router.get("/", testController);
 router.post("/Contact", addContact);
 //Users
@@ -25,6 +28,9 @@ router.post("/CreateArticle", CreateArticle)
 router.get("/SelectArticle", SelectArticle)
 router.delete("/DeleteArticle/:id", DeleteArticle)
 router.put("/UpdateArticle/:id", UpdateArticle);
+
+//Reservation
+router.post("/CreateReservation", CreateReservation)
 
 
 router.get("/admin", authMiddleware, (req, res) => {

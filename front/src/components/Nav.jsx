@@ -35,6 +35,11 @@ const Nav = (props) => {
         Article
         </NavLink>
         </li>
+        <li>
+        <NavLink to ="/createReservation">
+        Reservation
+        </NavLink>
+        </li>
       </ul>
     </nav>
   );

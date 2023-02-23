@@ -7,7 +7,6 @@ export default async (req, res) => {
   try {
     // Vérifier si l'article existe
     const articleCheckSql = "SELECT * FROM Articles WHERE id = ?";
-    console.log(typeof(id))
     const articleCheckResult = await asyncQuery(articleCheckSql, [id]);
 
     if (articleCheckResult.length === 0) {

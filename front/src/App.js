@@ -10,7 +10,8 @@ import Login from "./components/users/Login";
 import CreateArticle from "./components/article/createArticles"
 import SelectArticle from "./components/article/selectArticle"
 
-
+//Reservation
+import CreateReservation from "./components/reservation/createReservation"
 
 import Nav from "./components/Nav";
 import Admin from "./components/Admin";
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/Admin" element ={<Admin />} />
                 <Route path="/CreateArticle" element ={<CreateArticle />} />
                 <Route path="/selectArticle" element ={<SelectArticle />} />
+                <Route path="/CreateReservation" element ={<CreateReservation />} />
             </Routes>
         </BrowserRouter>
     )
