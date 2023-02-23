@@ -12,6 +12,7 @@ import authMiddleware from "../controllers/middleware.js";
 import CreateArticle from "../controllers/articles/createArticle.js"
 import SelectArticle from "../controllers/articles/selectArticle.js"
 import DeleteArticle from "../controllers/articles/deleteArticle.js"
+import UpdateArticle from "../controllers/articles/updateArticle.js"
 
 router.get("/", testController);
 router.post("/Contact", addContact);
@@ -23,6 +24,8 @@ router.post("/Login",loginUser);
 router.post("/CreateArticle", CreateArticle)
 router.get("/SelectArticle", SelectArticle)
 router.delete("/DeleteArticle/:id", DeleteArticle)
+router.put("/UpdateArticle/:id", UpdateArticle);
+
 
 router.get("/admin", authMiddleware, (req, res) => {
   res.send("Bienvenue sur la page Admin !");
