@@ -1,7 +1,9 @@
 import express from "express";
 const router = express.Router();
 import testController from "../controllers/testControllers.js";
+//Contact
 import addContact from "../controllers/addContact.js";
+
 //Users
 import createUser from "../controllers/users/createUser.js";
 import loginUser from "../controllers/users/loginUser.js";
@@ -16,6 +18,15 @@ import UpdateArticle from "../controllers/articles/updateArticle.js"
 
 //Reservation
 import CreateReservation from "../controllers/reservation/createReservation.js"
+import SelectReservation from "../controllers/reservation/selectReservation.js"
+import DeleteReservation from "../controllers/reservation/deleteReservation.js"
+
+//Nourriture
+import CreateNourriture from "../controllers/nourriture/createNourriture.js"
+
+//Categorie
+import CreateCategorie from "../controllers/categorie/createCategorie.js"
+import SelectCategorie from "../controllers/categorie/selectCategorie.js"
 
 router.get("/", testController);
 router.post("/Contact", addContact);
@@ -31,7 +42,15 @@ router.put("/UpdateArticle/:id", UpdateArticle);
 
 //Reservation
 router.post("/CreateReservation", CreateReservation)
+router.get("/SelectReservation", SelectReservation)
+router.delete("/DeleteReservation/:id",DeleteReservation)
 
+//Nourriture
+router.post("/CreateNourriture", CreateNourriture)
+
+//Categorie
+router.post("/CreateCategorie", CreateCategorie)
+router.get("/SelectCategorie", SelectCategorie)
 
 router.get("/admin", authMiddleware, (req, res) => {
   res.send("Bienvenue sur la page Admin !");

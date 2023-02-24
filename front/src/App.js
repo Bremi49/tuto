@@ -12,6 +12,13 @@ import SelectArticle from "./components/article/selectArticle"
 
 //Reservation
 import CreateReservation from "./components/reservation/createReservation"
+import SelectReservation from "./components/reservation/selectReservation"
+
+//Nourriture
+import CreateNourriture from "./components/nourriture/createNourriture"
+
+//Categorie
+import CreateCategorie from "./components/categorie/createCategorie"
 
 import Nav from "./components/Nav";
 import Admin from "./components/Admin";
@@ -31,6 +38,9 @@ const App = () => {
                 <Route path="/CreateArticle" element ={<CreateArticle />} />
                 <Route path="/selectArticle" element ={<SelectArticle />} />
                 <Route path="/CreateReservation" element ={<CreateReservation />} />
+                <Route path="/SelectReservation" element ={<SelectReservation />} />
+                <Route path="/CreateNourriture" element ={<CreateNourriture />} />
+                <Route path="/CreateCategorie" element ={<CreateCategorie />} />
             </Routes>
         </BrowserRouter>
     )

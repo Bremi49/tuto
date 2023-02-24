@@ -4,19 +4,19 @@ export default async (req, res) => {
   const { id } = req.params;
 
   try {
-    // Si un identifiant d'reservation est fourni, sélectionnez un seul reservation
-    let sql = "SELECT * FROM Reservation";
+    // Si un identifiant d'article est fourni, sélectionnez un seul article
+    let sql = "SELECT * FROM Categorie";
     let values = [];
     if (id) {
       sql += " WHERE id = ?";
       values = [id];
     }
 
-    // Exécuter la requête SQL pour récupérer les reservations de la base de données
+    // Exécuter la requête SQL pour récupérer les articles de la base de données
     const result = await asyncQuery(sql, values);
 
     if (result.length === 0) {
-      return res.status(404).send({ error: 'Aucun reservation trouvé' });
+      return res.status(404).send({ error: 'Aucune categorie trouvé' });
     } else if (id) {
        
       return res.status(200).send({ response: result[0] });

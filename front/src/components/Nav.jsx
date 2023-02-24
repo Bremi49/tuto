@@ -40,6 +40,16 @@ const Nav = (props) => {
         Reservation
         </NavLink>
         </li>
+        <li>
+        <NavLink to ="/selectReservation">
+        selectionner Reservation
+        </NavLink>
+        </li>
+        <li>
+        <NavLink to ="/createNourriture">
+        Plat
+        </NavLink>
+        </li>
       </ul>
     </nav>
   );
