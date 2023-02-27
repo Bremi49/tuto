@@ -50,6 +50,11 @@ const Nav = (props) => {
         Plat
         </NavLink>
         </li>
+        <li>
+        <NavLink to ="/selectNourriture">
+        voir les Plats
+        </NavLink>
+        </li>
       </ul>
     </nav>
   );

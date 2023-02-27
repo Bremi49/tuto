@@ -23,6 +23,9 @@ import DeleteReservation from "../controllers/reservation/deleteReservation.js"
 
 //Nourriture
 import CreateNourriture from "../controllers/nourriture/createNourriture.js"
+import SelectNourriture from "../controllers/nourriture/selectNourriture.js"
+import UpdateNourriture from "../controllers/nourriture/updateNourriture.js"
+import DeleteNourriture from "../controllers/nourriture/deleteNourriture.js"
 
 //Categorie
 import CreateCategorie from "../controllers/categorie/createCategorie.js"
@@ -47,6 +50,9 @@ router.delete("/DeleteReservation/:id",DeleteReservation)
 
 //Nourriture
 router.post("/CreateNourriture", CreateNourriture)
+router.get("/SelectNourriture", SelectNourriture)
+router.put("/UpdateNourriture/:id",UpdateNourriture)
+router.delete("/DeleteNourriture/:id", DeleteNourriture)
 
 //Categorie
 router.post("/CreateCategorie", CreateCategorie)

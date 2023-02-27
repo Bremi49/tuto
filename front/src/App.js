@@ -16,6 +16,7 @@ import SelectReservation from "./components/reservation/selectReservation"
 
 //Nourriture
 import CreateNourriture from "./components/nourriture/createNourriture"
+import SelectNourriture from "./components/nourriture/selectNourriture"
 
 //Categorie
 import CreateCategorie from "./components/categorie/createCategorie"
@@ -40,6 +41,7 @@ const App = () => {
                 <Route path="/CreateReservation" element ={<CreateReservation />} />
                 <Route path="/SelectReservation" element ={<SelectReservation />} />
                 <Route path="/CreateNourriture" element ={<CreateNourriture />} />
+                <Route path="/SelectNourriture" element ={<SelectNourriture />} />
                 <Route path="/CreateCategorie" element ={<CreateCategorie />} />
             </Routes>
         </BrowserRouter>

@@ -50,11 +50,12 @@ const CreateNourriture = () => {
       <input type="number" name="price" onChange={handleChange} value={nourriture.price} placeholder="Prix du plat" />
 
       <label htmlFor="categorie">Catégorie :</label>
-      <select name="categorie" id="categorie" onChange={handleChange} value={nourriture.categorie}>
+      <select name="categorie_name" id="categorie" onChange={handleChange} value={nourriture.categorie_name}>
         <option value="">Sélectionnez une catégorie</option>
           {categories && categories.length > 0 && categories.map((categorie) => {
           return(
-            <option key={categorie.id} value={categorie.id}>
+            <option key={categorie.id} value={categorie.name}>
+
               {categorie.name}
             </option>
         )
