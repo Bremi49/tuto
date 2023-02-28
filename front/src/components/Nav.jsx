@@ -60,6 +60,11 @@ const Nav = (props) => {
         voir les Plats
         </NavLink>
         </li>
+        <li>
+          <NavLink to="/Deconnexion">
+            Deconnexion
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

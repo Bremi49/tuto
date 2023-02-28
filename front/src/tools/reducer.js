@@ -1,17 +1,9 @@
 const reducer = (state, action) =>{
     switch(action.type){
-        case 'INCREMENTER':
-            return {
-                ...state,
-                count:state.count + 1,
-            }
-                
-        case 'ADD_DATA':
-            return {
-                ...state,
-                data : [...state.data, action.payload]
-            }
-
+        case 'LOGIN':
+            return {...state, isLogged:true, token:action.payload };
+        case 'LOGOUT':
+            return {...state, isLogged:false };
         default:
             return state;
     }

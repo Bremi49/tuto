@@ -1,7 +1,9 @@
 import { asyncQuery } from "../../config/database.js"
 
 export default async (req, res) => {
-    const { name, description, publication_date } = req.body;
+    const { name, description, publication_date, files } = req.body;
+    
+    console.log({ name, description, publication_date, files })
 
     // Check if the name and description meet character limits
     if (name.length < 3 || name.length > 255) {
@@ -16,6 +18,12 @@ export default async (req, res) => {
     const params = [name, description, publication_date];
     try {
         const result = await asyncQuery(sql, params);
+        
+        const sqlImg = "INSERT INTO Pictures (url, caption, article_id) VALUES (?,?,?)"
+        const paramsImg = [files, name, result.insertId]
+        
+        await asyncQuery(sqlImg, paramsImg);
+        
         return res.status(200).send({ response: 'Article créé' });
     } catch (error) {
         console.log(error);

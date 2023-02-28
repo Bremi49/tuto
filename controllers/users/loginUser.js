@@ -7,25 +7,20 @@ if (!userDataSQL) {
 return { response: false };
 }
 // ID du role Admin en BDD
- const ADMIN_ROLE_ID = 2;
- const SUPER_ADMIN_ROLE_ID = 1;
+ const ADMIN_ROLE_ID = 1;
 // // vérifie si le user est admin return true OR false
  const admin = userDataSQL.role_id === ADMIN_ROLE_ID;
-// // vérifie si le user est superAdmin return true OR false
-const superAdmin = userDataSQL.role_id === SUPER_ADMIN_ROLE_ID;
+
 
 const userData = {
     id: userDataSQL.id,
     email: userDataSQL.mail,
+    admin :true
+};
 
-
-    user: true,
-    admin,
-    superAdmin
-    };
         try {
             const token = await generateToken(userData);
-            return { response: true, admin, superAdmin, token };
+            return { response: true, admin, token };
         } catch (err) {
             console.log(err);
             return;

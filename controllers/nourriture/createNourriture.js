@@ -25,7 +25,8 @@
 import { asyncQuery } from "../../config/database.js"
 
 export default async (req, res) => {
-  const { price, name, description, categorie_name } = req.body;
+  const { price, name, description, categorie_name, files } = req.body;
+  console.log({ price, name, description, categorie_name, files })
 
   // Check if the name and description meet character limits
   if (name.length < 3 || name.length > 255) {
@@ -65,10 +66,16 @@ export default async (req, res) => {
 
   try {
     const result = await asyncQuery(sql, params);
+    // Ajout de l'image en BDD
+    const sqlImg = 'INSERT INTO Pictures (url, caption, nourriture_id) VALUES (?,?,?)'
+    const paramsImg = [files, name, result.insertId]
+    await asyncQuery(sqlImg, paramsImg);
     return res.status(200).send({ response: 'Nourriture créée' });
   } catch (error) {
     console.log(error);
     return res.status(500).send({ error: 'Erreur interne du serveur' });
   }
+  
+  
 }
 

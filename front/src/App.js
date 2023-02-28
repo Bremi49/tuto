@@ -23,6 +23,8 @@ import CreateCategorie from "./components/categorie/createCategorie"
 
 import Nav from "./components/Nav";
 import Admin from "./components/Admin";
+import PrivateRoute from "./components/PrivateRoute";
+import Deconnexion from "./components/Deconnexion"
 
 
 const App = () => {
@@ -33,17 +35,17 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="*" element={<Erreur />} />
                 <Route path="/Contact" element={<Contact />} />
-                <Route path="/CreateUser" element={<CreateUser />} />
+                <Route path="/CreateUser" element={<PrivateRoute auth="admin"><CreateUser /></PrivateRoute>} /> {/* ADMIN */}
                 <Route path="/Login" element ={<Login />} />
-                <Route path="/Admin" element ={<Admin />} />
-                <Route path="/CreateArticle" element ={<CreateArticle />} />
+                <Route path="/Admin" element ={<PrivateRoute auth="admin"><Admin /></PrivateRoute>} /> {/* ADMIN */}
+                <Route path="/CreateArticle" element={<PrivateRoute auth="admin"><CreateArticle /></PrivateRoute>} />
                 <Route path="/selectArticle" element ={<SelectArticle />} />
                 <Route path="/CreateReservation" element ={<CreateReservation />} />
-                <Route path="/SelectReservation" element ={<SelectReservation />} />
-                <Route path="/CreateNourriture" element ={<CreateNourriture />} />
+                <Route path="/SelectReservation" element ={<PrivateRoute auth="admin"><SelectReservation /></PrivateRoute>} /> {/* ADMIN */}
+                <Route path="/CreateNourriture" element ={<PrivateRoute auth="admin"><CreateNourriture /></PrivateRoute>} /> {/* ADMIN */}
                 <Route path="/SelectNourriture" element ={<SelectNourriture />} />
-                <Route path="/CreateCategorie" element ={<CreateCategorie />} />
-                <Route path="/Admin" element={<Admin />} />
+                <Route path="/CreateCategorie" element ={<PrivateRoute auth="admin"><CreateCategorie /></PrivateRoute>} /> {/* ADMIN */}
+                <Route path="/Deconnexion" element ={<Deconnexion />} />
             </Routes>
         </BrowserRouter>
     )

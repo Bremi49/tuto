@@ -14,7 +14,18 @@ const CreateArticle = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    axios.post(`${BASE_URL}/createArticle`, article).then((res) => {
+    
+    const dataFile = new FormData();
+    
+    const files = {...e.target.avatar.files};
+    
+    dataFile.append('name', article.name);
+    dataFile.append('description', article.description);
+    dataFile.append('publication_date', article.publication_date);
+    
+    dataFile.append('files', files[0], files[0].name);
+    
+    axios.post(`${BASE_URL}/createArticle`, dataFile).then((res) => {
       if (res.data.response) {
         localStorage.setItem("response", JSON.stringify(res.data.response));
         setArticle(initialState);
@@ -28,11 +39,12 @@ const CreateArticle = () => {
   };
 
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={submit} encType="multipart/form-data">
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
       <input type="text" name="name" onChange={handleChange} value={article.name} placeholder="Nom de l'article" maxLength="50" />
       <textarea name="description" onChange={handleChange} value={article.description} placeholder="Description de l'article" maxLength="500" />
       <input type="date" name="publication_date" onChange={handleChange} value={article.publication_date} />
+      <input type='file' name='avatar' />
       <input type="submit" />
     </form>
   );

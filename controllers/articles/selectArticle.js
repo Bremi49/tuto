@@ -5,7 +5,7 @@ export default async (req, res) => {
 
   try {
     // Si un identifiant d'article est fourni, sélectionnez un seul article
-    let sql = "SELECT * FROM Articles";
+    let sql = "SELECT a.*, p.url, p.caption FROM Articles a LEFT JOIN Pictures p ON a.id = p.article_id";
     let values = [];
     if (id) {
       sql += " WHERE id = ?";

@@ -56,48 +56,46 @@
 // }
 
 // export default Login;
-import { useState, useReducer } from "react";
+import { useState, useContext } from "react";
+import {StoreContext} from "../../tools/context.js"
 import axios from "axios";
 import { BASE_URL } from "../../tools/constante.js";
+import { useNavigate } from "react-router-dom";
 
-const initialState = { mail: '', mdp: '' };
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'setField':
-      return { ...state, [action.field]: action.value };
-    case 'reset':
-      return initialState;
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
-}
 
 const Login = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const initialState = { mail: '', mdp: '' };
+  const [input, setInput] = useState(initialState)
+  
+  const navigate = useNavigate()
+  
+  const [state, dispatch] = useContext(StoreContext)
   const [error, setError] = useState(null);
 
+  console.log(state)
 
   const handleChange = (e) => {
+    const {name, value} = e.target
     setError(null);
-    dispatch({ type: 'setField', field: e.target.name, value: e.target.value });
+    setInput({...input, [name]:value})
   };
 
   const submit = (e) => {
   e.preventDefault();
-  axios.post(`${BASE_URL}/login`, { mdp: state.mdp, mail: state.mail })
+  axios.post(`${BASE_URL}/login`, { mdp: input.mdp, mail: input.mail })
     .then(res => {
       if (res.data.error) {
         setError(res.data.error);
       } else if (res.data.response) {
-        if (typeof localStorage !== 'undefined') {
+        // if (typeof localStorage !== 'undefined') {
           localStorage.setItem('jwtToken', res.data.response.token);
-          window.location.href = "/admin";
 
-        }
-        axios.defaults.headers.common["Authorization"] =
-          "Bearer " + res.data.response.token;
-        dispatch({ type: 'reset' });
+        // }
+        axios.defaults.headers.common["Authorization"] = "Bearer " + res.data.response.token;
+        dispatch({ type: 'LOGIN', payload: res.data.response.token});
+        
+          navigate("/admin")
       }
     }).catch(err => {
       console.log(err);
@@ -107,8 +105,8 @@ const Login = () => {
 
   return (
     <form onSubmit={submit}>
-      <input type='text' name='mail' value={state.mail} onChange={handleChange} placeholder='mail' />
-      <input type='password' name='mdp' value={state.mdp} onChange={handleChange} placeholder='password' />
+      <input type='email' name='mail' value={input.mail} onChange={handleChange} placeholder='mail' />
+      <input type='password' name='mdp' value={input.mdp} onChange={handleChange} placeholder='password' />
       <input type="submit" />
       {error !== null && <p>{error}</p>}
     </form>

@@ -31,14 +31,19 @@ import DeleteNourriture from "../controllers/nourriture/deleteNourriture.js"
 import CreateCategorie from "../controllers/categorie/createCategorie.js"
 import SelectCategorie from "../controllers/categorie/selectCategorie.js"
 
+// middleware
+import uploadFile from "../controllers/uploadFiles.js"
+import checkToken from '../controllers/checkToken.js'
+
+
 router.get("/", testController);
 router.post("/Contact", addContact);
 //Users
-router.post("/CreateUser", createUser);
+router.post("/CreateUser", authMiddleware,createUser);
 router.post("/Login",loginUser);
 
 //Articles
-router.post("/CreateArticle", CreateArticle)
+router.post("/CreateArticle",uploadFile, CreateArticle)
 router.get("/SelectArticle", SelectArticle)
 router.delete("/DeleteArticle/:id", DeleteArticle)
 router.put("/UpdateArticle/:id", UpdateArticle);
@@ -49,7 +54,7 @@ router.get("/SelectReservation", SelectReservation)
 router.delete("/DeleteReservation/:id",DeleteReservation)
 
 //Nourriture
-router.post("/CreateNourriture", CreateNourriture)
+router.post("/CreateNourriture", uploadFile, CreateNourriture)
 router.get("/SelectNourriture", SelectNourriture)
 router.put("/UpdateNourriture/:id",UpdateNourriture)
 router.delete("/DeleteNourriture/:id", DeleteNourriture)
@@ -59,4 +64,6 @@ router.post("/CreateCategorie", CreateCategorie)
 router.get("/SelectCategorie", SelectCategorie)
 
 router.get("/admin", authMiddleware)
+router.get("/relogged", checkToken)
+
 export default router;
