@@ -92,7 +92,8 @@ const Login = () => {
       } else if (res.data.response) {
         if (typeof localStorage !== 'undefined') {
           localStorage.setItem('jwtToken', res.data.response.token);
-          window.location.href = "/Articles"; // Rediriger l'utilisateur vers la page des articles
+          window.location.href = "/admin";
+
         }
         axios.defaults.headers.common["Authorization"] =
           "Bearer " + res.data.response.token;

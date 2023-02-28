@@ -47,7 +47,7 @@ const SelectNourriture = () => {
   
   const deleteNourriture = (id) => {
     axios
-    .delete(`${BASE_URL}/DeleteNourriture/${id}`,deleteNourriture)
+    .delete(`${BASE_URL}/DeleteNourriture/${id}`)
     .then((res) => {
       console.log("API response:", res.data.response);
       setNourriture(nourriture.filter((nourriture) => nourriture.id !== id));
@@ -58,6 +58,7 @@ const SelectNourriture = () => {
         setErrorMessage("Erreur lors de la suppression du plat");
     });
   };
+
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -134,7 +135,7 @@ return (
                 <p>{item.description}</p>
                 <p>{item.price}€</p>
                 <p>{categories[item.id_categorie]}</p>
-                <button onClick={() => deleteNourriture(nourriture.id)}>Supprimer</button>
+                <button onClick={() => deleteNourriture(item.id)}>Supprimer</button>
                 <button onClick={() => startEditing(item)}>Modifier</button>
               </li>
             </ul>

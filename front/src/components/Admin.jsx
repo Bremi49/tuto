@@ -1,6 +1,6 @@
 const Admin = () =>{
     return(
-           <div>coucou</div>
+           <div>Tu es connecté Monsieur l'Admin</div>
         )
 }
  

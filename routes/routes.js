@@ -58,8 +58,5 @@ router.delete("/DeleteNourriture/:id", DeleteNourriture)
 router.post("/CreateCategorie", CreateCategorie)
 router.get("/SelectCategorie", SelectCategorie)
 
-router.get("/admin", authMiddleware, (req, res) => {
-  res.send("Bienvenue sur la page Admin !");
-});
-
+router.get("/admin", authMiddleware)
 export default router;
