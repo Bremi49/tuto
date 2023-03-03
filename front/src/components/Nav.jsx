@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Fragment } from "react";
 
-
-const Nav = ({ isAdmin }) => {
+const Nav = ({ isAdmin, isLoggedIn }) => {
   return (
     <nav>
       <ul>
@@ -10,10 +9,7 @@ const Nav = ({ isAdmin }) => {
           <NavLink to="/">HOME</NavLink>
         </li>
         <li>
-          <NavLink to="/Login">Login</NavLink>
-        </li>
-        <li>
-          <NavLink to="/Contact">Contact</NavLink>
+          <NavLink to="/createReservation">Reservation</NavLink>
         </li>
         <li>
           <NavLink to="/CustomArticle">Article</NavLink>
@@ -21,14 +17,19 @@ const Nav = ({ isAdmin }) => {
         <li>
           <NavLink to="/CustomFood">Plat</NavLink>
         </li>
-        {isAdmin && (
+        <li>
+          <NavLink to="/Contact">Contact</NavLink>
+        </li>
+        {isLoggedIn && isAdmin && (
           <li>
             <NavLink to="/Admin">Admin</NavLink>
           </li>
-        )}
-      </ul>
-    </nav>
-  );
+)}
+  </ul>
+</nav>
+);
 };
 
 export default Nav;
+
+

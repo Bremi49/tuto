@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import Logo from "./components/logo/logo"
 //CSS
 import "./App.css"
 
@@ -42,6 +42,7 @@ import Footer from "./components/Footer"
 const App = () => {
     return(
         <BrowserRouter>
+            <Logo />
             <Header />
             <Admin />
             <Routes>

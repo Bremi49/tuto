@@ -3,7 +3,7 @@ const reducer = (state, action) =>{
         case 'LOGIN':
             return {...state, isLogged:true, user:action.payload };
         case 'LOGOUT':
-            return {...state, isLogged:false };
+            return {...state, isLogged:false, user: {} };
         default:
             return state;
     }

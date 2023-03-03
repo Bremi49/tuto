@@ -23,7 +23,7 @@ const Admin = () =>{
               </li>
               <li>
                 <NavLink to="/selectReservation">
-                  Supprimer les réservations
+                  Afficher/Supprimer les réservations
                 </NavLink>
               </li>
               <li>
