@@ -28,11 +28,13 @@ const CreateCategorie = () => {
   };
 
   return (
+
     <form onSubmit={submit}>
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
       <input type="text" name="name" onChange={handleChange} value={categorie.name} placeholder="Nom de la categorie" maxLength="50" />
       <input type="submit" />
     </form>
+
   );
 };
 

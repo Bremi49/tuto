@@ -27,11 +27,11 @@ const CreateArticle = () => {
     
     axios.post(`${BASE_URL}/createArticle`, dataFile).then((res) => {
       if (res.data.response) {
-        localStorage.setItem("response", JSON.stringify(res.data.response));
-        setArticle(initialState);
-      } else if (res.data.error === "Article déjà existant") {
-        setErrorMessage("Un article avec ce nom existe déjà");
-      }
+    localStorage.setItem("response", JSON.stringify(res.data.response));
+    setArticle(initialState);
+} else if (res.data.error === "Un article avec le même nom existe déjà") {
+    setErrorMessage("Un article avec ce nom existe déjà");
+}
     }).catch(error => {
       console.error(error);
       setErrorMessage("Erreur lors de la création de l'article");
@@ -39,14 +39,16 @@ const CreateArticle = () => {
   };
 
   return (
+
     <form onSubmit={submit} encType="multipart/form-data">
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-      <input type="text" name="name" onChange={handleChange} value={article.name} placeholder="Nom de l'article" maxLength="50" />
-      <textarea name="description" onChange={handleChange} value={article.description} placeholder="Description de l'article" maxLength="500" />
+      <input type="text" name="name" onChange={handleChange} value={article.name} placeholder="Nom de l'article" maxLength="50" required/>
+      <textarea name="description" onChange={handleChange} value={article.description} placeholder="Description de l'article" maxLength="500" required/>
       <input type="date" name="publication_date" onChange={handleChange} value={article.publication_date} />
       <input type='file' name='avatar' />
       <input type="submit" />
     </form>
+
   );
 };
 

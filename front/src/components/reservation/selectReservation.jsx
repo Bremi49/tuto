@@ -45,6 +45,7 @@ const deleteReservation = (id) => {
     }
 
   return (
+
     <ul>
       {reservation.map((reservation) => (
           <li key={reservation.id}>
@@ -58,6 +59,7 @@ const deleteReservation = (id) => {
         </li>
       ))}
     </ul>
+
   )
 }
 export default SelectReservation;

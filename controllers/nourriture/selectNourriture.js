@@ -4,12 +4,14 @@ export default async (req, res) => {
   const { id } = req.params;
 
   try {
-    let sql = "SELECT Nourriture.*, Categorie.name AS category_name FROM Nourriture LEFT JOIN Categorie ON Nourriture.id_categorie = Categorie.id";
+    let sql = "SELECT N.*, C.name AS category_name, N.id_categorie, GROUP_CONCAT(P.url) AS images FROM Nourriture N LEFT JOIN Categorie C ON N.id_categorie = C.id LEFT JOIN Pictures P ON N.id = P.nourriture_id";
+
     let values = [];
     if (id) {
-      sql += " WHERE Nourriture.id = ?";
+      sql += " WHERE N.id = ?";
       values = [id];
     }
+    sql += " GROUP BY N.id";
 
     const result = await asyncQuery(sql, values);
 

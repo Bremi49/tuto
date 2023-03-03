@@ -55,7 +55,7 @@ router.delete("/DeleteReservation/:id",DeleteReservation)
 
 //Nourriture
 router.post("/CreateNourriture", uploadFile, CreateNourriture)
-router.get("/SelectNourriture", SelectNourriture)
+router.get("/SelectNourriture",SelectNourriture)
 router.put("/UpdateNourriture/:id",UpdateNourriture)
 router.delete("/DeleteNourriture/:id", DeleteNourriture)
 

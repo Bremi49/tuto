@@ -25,7 +25,10 @@ const PrivateRoute = ({children, auth = null}) => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`
             // on verrifie le token puis on sauvegarde les donner dans le reducer
             axios.get(`${BASE_URL}/relogged`)
-            .then(res => dispatch({type:"LOGIN", payload:res.data.result}))
+            .then(res => {
+              console.log(res)
+              dispatch({type:"LOGIN", payload:res.data.result}
+              )})
             .catch(e => console.log(e))
           } else { setLoading(false) }
         }

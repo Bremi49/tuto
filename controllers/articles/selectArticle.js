@@ -18,10 +18,8 @@ export default async (req, res) => {
     if (result.length === 0) {
       return res.status(404).send({ error: 'Aucun article trouvé' });
     } else if (id) {
-       
       return res.status(200).send({ response: result[0] });
     } else {
-      console.log(result)
       return res.status(200).send({ response: result });
     }
   } catch (error) {

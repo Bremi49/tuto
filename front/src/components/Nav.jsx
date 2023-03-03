@@ -1,70 +1,31 @@
 import { NavLink } from "react-router-dom";
-import {useEffect} from 'react'
-import axios from 'axios'
-const Nav = (props) => {
-  
-  // useEffect(() => {
-  //   if(!axios.defaults.headers.common['Authorization']){
-  //     const token = localStorage.getItem("jwtToken")
-  //     if(token){
-  //       axios.defaults.headers.common['Authorization'] = 'Bearer '+token
-  //     }
-  //   }
-  // },[])
-  
+import { Fragment } from "react";
+
+
+const Nav = ({ isAdmin }) => {
   return (
     <nav>
       <ul>
         <li>
-          <NavLink to="/">
-            HOME
-          </NavLink>
+          <NavLink to="/">HOME</NavLink>
         </li>
         <li>
-        <NavLink to ="/Login">
-        Login
-        </NavLink>
+          <NavLink to="/Login">Login</NavLink>
         </li>
         <li>
-          <NavLink to="/Contact">
-            contact
-          </NavLink>
+          <NavLink to="/Contact">Contact</NavLink>
         </li>
         <li>
-          <NavLink to="/createArticle">
-          creation d'article
-          </NavLink>
+          <NavLink to="/CustomArticle">Article</NavLink>
         </li>
         <li>
-        <NavLink to ="/selectArticle">
-        Article
-        </NavLink>
+          <NavLink to="/CustomFood">Plat</NavLink>
         </li>
-        <li>
-        <NavLink to ="/createReservation">
-        Reservation
-        </NavLink>
-        </li>
-        <li>
-        <NavLink to ="/selectReservation">
-        selectionner Reservation
-        </NavLink>
-        </li>
-        <li>
-        <NavLink to ="/createNourriture">
-        Plat
-        </NavLink>
-        </li>
-        <li>
-        <NavLink to ="/selectNourriture">
-        voir les Plats
-        </NavLink>
-        </li>
-        <li>
-          <NavLink to="/Deconnexion">
-            Deconnexion
-          </NavLink>
-        </li>
+        {isAdmin && (
+          <li>
+            <NavLink to="/Admin">Admin</NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );

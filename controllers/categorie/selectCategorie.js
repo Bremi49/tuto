@@ -21,7 +21,6 @@ export default async (req, res) => {
        
       return res.status(200).send({ response: result[0] });
     } else {
-      console.log(result)
       return res.status(200).send({ response: result });
     }
   } catch (error) {

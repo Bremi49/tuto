@@ -102,8 +102,10 @@ const SelectNourriture = () => {
   }
 
 return (
+
   <div>
-    {nourriture.map((item) => (
+    {nourriture.map((item) => {
+      return (
       <li key={item.id}>
         {isEditing && editedNourriture.id === item.id ? (
           <div>
@@ -135,6 +137,9 @@ return (
                 <p>{item.description}</p>
                 <p>{item.price}€</p>
                 <p>{categories[item.id_categorie]}</p>
+                {item.images && (
+                  <img src={`${BASE_URL}/img/${item.images}`} alt={item.caption} />
+                )}
                 <button onClick={() => deleteNourriture(item.id)}>Supprimer</button>
                 <button onClick={() => startEditing(item)}>Modifier</button>
               </li>
@@ -142,8 +147,11 @@ return (
           </div>
         )}
       </li>
-    ))}
+      )
+      
+    })}
   </div>
+
 );
 }
 export default SelectNourriture;

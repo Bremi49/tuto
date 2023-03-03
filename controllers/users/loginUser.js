@@ -20,7 +20,7 @@ const userData = {
 
         try {
             const token = await generateToken(userData);
-            return { response: true, admin, token };
+            return { response: userData, admin, token };
         } catch (err) {
             console.log(err);
             return;

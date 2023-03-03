@@ -8,7 +8,7 @@ const CreateNourriture = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [categories, setCategories] = useState([]);
 
-console.log(nourriture)
+  console.log(nourriture)
 
   useEffect(() => {
     // Récupère les catégories depuis l'API
@@ -56,14 +56,15 @@ console.log(nourriture)
   };
 
   return (
+
     <form onSubmit={submit} encType="multipart/form-data">
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-      <input type="text" name="name" onChange={handleChange} value={nourriture.name} placeholder="Nom du nourriture" maxLength="50" />
-      <textarea name="description" onChange={handleChange} value={nourriture.description} placeholder="Description du nourriture" maxLength="500" />
-      <input type="number" name="price" onChange={handleChange} value={nourriture.price} placeholder="Prix du plat" />
+      <input type="text" name="name" onChange={handleChange} value={nourriture.name} placeholder="Nom du nourriture" maxLength="255" required/>
+      <textarea name="description" onChange={handleChange} value={nourriture.description} placeholder="Description du nourriture" maxLength="1000" required/>
+      <input type="number" name="price" onChange={handleChange} value={nourriture.price} placeholder="Prix du plat" maxLength ="4" required />
 
       <label htmlFor="categorie">Catégorie :</label>
-      <select name="categorie_name" id="categorie" onChange={handleChange} value={nourriture.categorie_name}>
+      <select name="categorie_name" id="categorie" onChange={handleChange} value={nourriture.categorie_name} required>
         <option value="">Sélectionnez une catégorie</option>
           {categories && categories.length > 0 && categories.map((categorie) => {
           return(
@@ -75,9 +76,10 @@ console.log(nourriture)
             
           })}
       </select>
-      <input type='file' name='avatar' />
+      <input type='file' name='avatar' required />
       <input type="submit" />
     </form>
+
   );
 };
 

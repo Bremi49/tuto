@@ -84,45 +84,45 @@ const updateArticle = () => {
     }
 
   return (
+
     <div>
       {articles.map((article) => (
-        <li key={article.id}>
-      {isEditing && editedArticle.id === article.id ? (
-    <div>
-      <input
-             type="text"
-             name="name"
-             value={editedArticle.name}
-             onChange={handleInputChange}
-           />
-    <textarea
-             name="description"
-             value={editedArticle.description}
-             onChange={handleInputChange}
-           />
-            {updateError && <p>{updateError}</p>}
-            <button onClick={updateArticle}>Enregistrer</button>
-            <button onClick={cancelEditing}>Annuler</button>
-    </div>
+  <div key={article.id}>
+    {isEditing && editedArticle.id === article.id ? (
+      <div>
+        <input
+          type="text"
+          name="name"
+          value={editedArticle.name}
+          onChange={handleInputChange}
+        />
+        <textarea
+          name="description"
+          value={editedArticle.description}
+          onChange={handleInputChange}
+        />
+        {updateError && <p>{updateError}</p>}
+        <button onClick={updateArticle}>Enregistrer</button>
+        <button onClick={cancelEditing}>Annuler</button>
+      </div>
     ) : (
-    <div>
-    <ul>
-      {articles.map((article) => (
-          <li key={article.id}>
+      article.id && (
+        <div>
           <h2>{article.name}</h2>
           <p>{article.description}</p>
-          {article.url && <img src={`${BASE_URL}/img/${article.url}`} alt={article.caption} />}
+          {article.url && (
+            <img src={`${BASE_URL}/img/${article.url}`} alt={article.caption} />
+          )}
           <button onClick={() => deleteArticle(article.id)}>Supprimer</button>
           <button onClick={() => startEditing(article)}>Modifier</button>
-        </li>
-      ))}
-    </ul>
-    </div>
-    )
-  }
-  </li>
-  ))}
+        </div>
+      )
+    )}
   </div>
+))}
+
+  </div>
+
   )
 }
 export default SelectArticle;
