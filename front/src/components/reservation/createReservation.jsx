@@ -15,7 +15,7 @@ const CreateReservation = () => {
   const minDate = new Date().toISOString().slice(0, 16);
 
 
-  const { date, name, mail, telephone } = reservation;
+  const { date } = reservation;
   const parsedDate = new Date(date);
 
   const handleChange = (e) => {
@@ -42,76 +42,90 @@ const CreateReservation = () => {
     } else {
       setErrorMail("");
     }
-      // Check number of clients and set error message if needed
-  if (name === "nombre_client" && value > 10) {
-    setErrorNumber("La réservation ne peut pas dépasser 10 personnes");
-  } else {
-    setErrorNumber("");
-  }
-};
-;
-
-  const submit = (e) => {
-    e.preventDefault();
 
     // Check if the reservation is during the opening hours
-    if (!openingHours.includes(parsedDate.getHours())) {
+    if (name === "date" && parsedDate && !openingHours.includes(parsedDate.getHours())) {
       setErrorMessage(
         `La réservation ne peut être faite que pendant les heures d'ouverture de 12h-14h et de 19h a 21h30 et du mardi au dimanche midi.`
       );
-      return;
+    } else {
+      setErrorMessage("");
     }
 
     // Check if the reservation is during days when the restaurant is open
-    if (!openDays.includes(parsedDate.getDay())) {
+    if (name === "date" && parsedDate && !openDays.includes(parsedDate.getDay())) {
       setErrorMessage("La réservation ne peut être faite que du mardi au dimanche midi");
-      return;
+    } else {
+      setErrorMessage("");
     }
-
+        // Check number of clients and set error message if needed
+    if (name === "nombre_client" && value > 10) {
+      setErrorNumber("La réservation ne peut pas dépasser 10 personnes");
+    } else {
+      setErrorNumber("");
+    }
+        if (name === "date" && parsedDate) {
+      const hour = parsedDate.getHours();
+      const day = parsedDate.getDay();
+    
+      const isLunchTime = hour >= 12 && hour < 14;
+      const isDinnerTime = hour >= 19 && hour < 22;
+      const isWeekend = day === 0 || day === 2 || day === 3 || day === 4 || day === 5 || day === 6;
+    
+      if (!(isLunchTime || (isDinnerTime && isWeekend))) {
+        setErrorMessage("La réservation ne peut être faite que pendant les heures d'ouverture de 12h-14h et de 19h a 21h30 et du mardi au dimanche midi");
+        return;
+      }
+    }
+};
+    
+    const submit = (e) => {
+    e.preventDefault();
     axios
-      .post(`${BASE_URL}/createReservation`, reservation)
-      .then((res) => {
-        if (res.data.response) {
-          localStorage.setItem("response", JSON.stringify(res.data.response));
-          setReservation(initialState);
-        } else if (res.data.error === "reservation déjà existant") {
-          setErrorMessage("Une reservation avec ce nom existe déjà");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        setErrorMessage("Erreur lors de la création de la réservation");
+  .post(`${BASE_URL}/createReservation`, reservation)
+  .then((res) => {
+    if (res.data.response) {
+      localStorage.setItem("response", JSON.stringify(res.data.response));
+      setReservation(initialState);
+    } else if (res.data.error === "reservation déjà existant") {
+      setErrorMessage("Une reservation avec ce nom existe déjà");
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+    setErrorMessage("Erreur lors de la création de la réservation");
       });
-  };
+    };
 
-  return (
+    return (
   <form onSubmit={submit}>
     {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
 
     <div>
       <label>Date:</label>
-      <input type="datetime-local" name="date" onChange={handleChange} value={reservation.date} maxLength="50" required />
-      {!openingHours.includes(parsedDate.getHours()) || !openDays.includes(parsedDate.getDay()) ? (
+      <input type="datetime-local" name="date" onChange={handleChange} value={reservation.date} min={minDate} maxLength="50" required />
+      {errorMessage && !reservation.date && (
         <div style={{ color: "red" }}>La réservation ne peut être faite que pendant les heures d'ouverture de 12h-14h et de 19h a 21h30 et du mardi au dimanche midi.</div>
-      ) : null}
+      )}
     </div>
 
     <div>
-  <label>Nombre de clients:</label>
-  <input type="number" name="nombre_client" onChange={handleChange} value={reservation.nombre_client} placeholder="Nombre de clients" maxLength="50" required />
-  {errorNumber && <div style={{ color: "red" }}>{errorNumber}</div>}
-  {reservation.nombre_client > 10 && <div style={{ color: "red" }}>La réservation ne peut pas dépasser 10 personnes</div>}
-</div>
-
+      <label>Nombre de clients:</label>
+      <input type="number" name="nombre_client" onChange={handleChange} value={reservation.nombre_client} placeholder="Nombre de clients" maxLength="50" required />
+      {errorNumber && <div style={{ color: "red" }}>{errorNumber}</div>}
+      {reservation.nombre_client > 10 && <div style={{ color: "red" }}>La réservation ne peut pas dépasser 10 personnes</div>}
+    </div>
 
     <div>
       <label>Nom:</label>
       <input type="text" name="name" onChange={handleChange} value={reservation.name} placeholder="Nom" maxLength="50" required />
+      {errorName && <div style={{ color: "red" }}>{errorName}</div>}
     </div>
 
     <div>
       <label>Adresse e-mail:</label>
       <input type="email" name="mail" onChange={handleChange} value={reservation.mail} placeholder="Adresse e-mail" maxLength="50" required />
+      {errorMail && <div style={{ color: "red" }}>{errorMail}</div>}
     </div>
 
     <div>
@@ -131,5 +145,6 @@ const CreateReservation = () => {
   </form>
 );
 
-}
-export default CreateReservation
+};
+
+export default CreateReservation;

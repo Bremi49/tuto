@@ -8,8 +8,8 @@ const Admin = () =>{
     return(
       <Fragment>
       {(state.user && state.user.admin) &&
-        <nav>
-           <div>Tu es connecté Monsieur l'Admin</div>
+        <nav className="admin">
+           <div>Admin</div>
             <ul>
                 <li>
                     <NavLink to="/createArticle">

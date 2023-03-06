@@ -4,7 +4,6 @@ const Logo = () => {
     return (
         <Helmet>
             <title>L'instinct Saumur</title>
-            <link rel="icon" href="/logocuisine.png"/>
         </Helmet>
     );
 };

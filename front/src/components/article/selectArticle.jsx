@@ -111,7 +111,7 @@ const updateArticle = () => {
           <h2>{article.name}</h2>
           <p>{article.description}</p>
           {article.url && (
-            <img src={`${BASE_URL}/img/${article.url}`} alt={article.caption} />
+            <div className="selectImg"><img src={`${BASE_URL}/img/${article.url}`} alt={article.caption} /></div>
           )}
           <button onClick={() => deleteArticle(article.id)}>Supprimer</button>
           <button onClick={() => startEditing(article)}>Modifier</button>

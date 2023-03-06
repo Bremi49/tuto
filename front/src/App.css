@@ -36,30 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-header {
-  background-color:rgb(174,188,191);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-footer {
-  background-color:rgb(174,188,191);
-  display: flex;
-  justify-content: center; /* centre horizontalement */
-  align-items: center; /* centre verticalement */
-}
-
-
-a{
-  text-decoration:none;
-  color:black;
-}
-a:visited {
-  color: black; /* Couleur des liens visités */
-}
-
-li{
-  list-style:none;
-}

@@ -1,18 +1,17 @@
 import { NavLink } from "react-router-dom";
-import { Fragment } from "react";
 
 const Nav = ({ isAdmin, isLoggedIn }) => {
   return (
     <nav>
       <ul>
         <li>
-          <NavLink to="/">HOME</NavLink>
+          <NavLink to="/">Acceuil</NavLink>
         </li>
         <li>
           <NavLink to="/createReservation">Reservation</NavLink>
         </li>
         <li>
-          <NavLink to="/CustomArticle">Article</NavLink>
+          <NavLink to="/CustomArticle">A propos</NavLink>
         </li>
         <li>
           <NavLink to="/CustomFood">Plat</NavLink>

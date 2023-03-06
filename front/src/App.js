@@ -36,6 +36,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Deconnexion from "./components/Deconnexion";
 import Header from "./components/Header";
 import Footer from "./components/Footer"
+import "./style.css"
 
 
 

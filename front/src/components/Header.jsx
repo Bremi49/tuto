@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
-import { Fragment, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import jwt_decode from "jwt-decode"
 import Nav from "./Nav";
 import Admin from "./Admin"
+import headerImage from'./refontlogo.jpeg'
+
 
 const Header = () => {
   const [isAdmin, setIsAdmin] = useState(false)
@@ -35,6 +36,8 @@ const Header = () => {
 
   return (
     <header>
+    <img src={headerImage} alt="Logo"/>
+    <h1>L'Instinct</h1>
       {isAdmin && isLoggedIn && <Admin />}
       <Nav isAdmin={isAdmin} isLoggedIn={isLoggedIn} />
     </header>
