@@ -7,8 +7,7 @@ const CreateNourriture = () => {
   const [nourriture, setNourriture] = useState(initialState);
   const [errorMessage, setErrorMessage] = useState("");
   const [categories, setCategories] = useState([]);
-
-  console.log(nourriture)
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
     // Récupère les catégories depuis l'API
@@ -45,6 +44,7 @@ const CreateNourriture = () => {
         if (res.data.response) {
           localStorage.setItem("response", JSON.stringify(res.data.response));
           setNourriture(initialState);
+          setSuccessMessage("Le plat a été créé avec succès !");
         } else if (res.data.error === "nourriture déjà existante") {
           setErrorMessage("nourriture avec ce nom existe déjà");
         }
@@ -59,6 +59,7 @@ const CreateNourriture = () => {
 
     <form onSubmit={submit} encType="multipart/form-data">
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+      {successMessage && <div style={{ color: "green" }}>{successMessage}</div>}
       <input type="text" name="name" onChange={handleChange} value={nourriture.name} placeholder="Nom du nourriture" maxLength="255" required/>
       <textarea name="description" onChange={handleChange} value={nourriture.description} placeholder="Description du nourriture" maxLength="1000" required/>
       <input type="number" name="price" onChange={handleChange} value={nourriture.price} placeholder="Prix du plat" maxLength ="4" required />

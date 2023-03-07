@@ -5,7 +5,10 @@ import "./App.css"
 
 import Home from "./components/Home";
 import Erreur from "./components/Error";
-import Contact from "./components/Contact";
+
+//Contact
+import Contact from "./components/contact/Contact";
+import SelectContact from "./components/contact/selectContact"
 
 //Users
 import CreateUser from "./components/users/createUser";
@@ -52,6 +55,7 @@ const App = () => {
                 
                 {/*Contact*/ }
                 <Route path="/Contact" element={<PrivateRoute><Contact /></PrivateRoute>} />
+                <Route path="/SelectContact" element={<PrivateRoute auth="admin"><SelectContact/></PrivateRoute>} />
                 
                 {/* CreateAdmin*/}
                 <Route path="/CreateUser" element={<PrivateRoute auth="admin"><CreateUser /></PrivateRoute>} />

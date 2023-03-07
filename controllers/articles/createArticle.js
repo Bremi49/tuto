@@ -12,7 +12,6 @@ export default async (req, res) => {
             return res.status(400).send({ error: 'La description doit contenir entre 3 et 1000 caractères' });
         }
         
-
         // Check if an article with the same name already exists
         const checkSql = "SELECT COUNT(*) AS count FROM Articles WHERE name = ?";
         const checkParams = [name];
@@ -26,10 +25,11 @@ export default async (req, res) => {
         const params = [name, description, publication_date];
         const result = await asyncQuery(sql, params);
         
-        const sqlImg = "INSERT INTO Pictures (url, caption, article_id) VALUES (?,?,?)"
-        const paramsImg = [files, name, result.insertId]
-        
-        await asyncQuery(sqlImg, paramsImg);
+        if (files) {
+            const sqlImg = "INSERT INTO Pictures (url, caption, article_id) VALUES (?,?,?)"
+            const paramsImg = [files, name, result.insertId]
+            await asyncQuery(sqlImg, paramsImg);
+        }
         
         return res.status(200).send({ response: 'Article créé' });
     } catch (error) {

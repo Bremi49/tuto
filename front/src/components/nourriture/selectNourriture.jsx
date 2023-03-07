@@ -130,7 +130,7 @@ return (
             <button onClick={cancelEditing}>Annuler</button>
           </div>
         ) : (
-          <div>
+          <div className="food">
             <ul>
               <li key={item.id}>
                 <h2>{item.name}</h2>

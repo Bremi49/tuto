@@ -38,7 +38,7 @@ const Login = () => {
         axios.defaults.headers.common["Authorization"] = "Bearer " + res.data.response.token;
         dispatch({ type: 'LOGIN', payload: res.data.response.response});
         
-          navigate("/admin")
+          navigate("/")
       }
     }).catch(err => {
       console.log(err);

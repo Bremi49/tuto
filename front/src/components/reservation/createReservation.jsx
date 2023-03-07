@@ -9,6 +9,7 @@ const CreateReservation = () => {
   const [errorNumber, setErrorNumber] = useState("");
   const [errorName, setErrorName] = useState("");
   const [errorMail, setErrorMail] = useState("");
+const [successMessage, setSuccessMessage] = useState("");
 
   const openingHours = [12, 13, 14, 19, 20, 21];
   const openDays = [2, 3, 4, 5, 6, 7, 0];
@@ -84,13 +85,14 @@ const CreateReservation = () => {
     axios
   .post(`${BASE_URL}/createReservation`, reservation)
   .then((res) => {
-    if (res.data.response) {
-      localStorage.setItem("response", JSON.stringify(res.data.response));
-      setReservation(initialState);
-    } else if (res.data.error === "reservation déjà existant") {
-      setErrorMessage("Une reservation avec ce nom existe déjà");
-    }
-  })
+            if (res.data.response) {
+          localStorage.setItem("response", JSON.stringify(res.data.response));
+          setReservation(initialState);
+          setSuccessMessage("La réservation a été créée avec succès !");
+        } else if (res.data.error === "reservation déjà existant") {
+          setErrorMessage("Une reservation avec ce nom existe déjà");
+        }
+      })
   .catch((error) => {
     console.error(error);
     setErrorMessage("Erreur lors de la création de la réservation");
@@ -100,7 +102,7 @@ const CreateReservation = () => {
     return (
   <form onSubmit={submit}>
     {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-
+{successMessage && <div style={{ color: "green" }}>{successMessage}</div>}
     <div>
       <label>Date:</label>
       <input type="datetime-local" name="date" onChange={handleChange} value={reservation.date} min={minDate} maxLength="50" required />

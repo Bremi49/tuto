@@ -37,6 +37,11 @@ const Admin = () =>{
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/selectContact">
+                  Afficher/Supprimer les contacts
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/Deconnexion">
                   Deconnexion
                 </NavLink>

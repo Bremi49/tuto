@@ -11,10 +11,10 @@ const Nav = ({ isAdmin, isLoggedIn }) => {
           <NavLink to="/createReservation">Reservation</NavLink>
         </li>
         <li>
-          <NavLink to="/CustomArticle">A propos</NavLink>
+          <NavLink to="/CustomFood">Plat</NavLink>
         </li>
         <li>
-          <NavLink to="/CustomFood">Plat</NavLink>
+          <NavLink to="/CustomArticle">A propos</NavLink>
         </li>
         <li>
           <NavLink to="/Contact">Contact</NavLink>

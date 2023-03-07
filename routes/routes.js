@@ -1,9 +1,11 @@
 import express from "express";
 const router = express.Router();
 import testController from "../controllers/testControllers.js";
-//Contact
-import addContact from "../controllers/addContact.js";
 
+//Contact
+import addContact from "../controllers/contact/addContact.js";
+import deleteContact from "../controllers/contact/deleteContact.js"
+import selectContact from "../controllers/contact/selectContact.js"
 //Users
 import createUser from "../controllers/users/createUser.js";
 import loginUser from "../controllers/users/loginUser.js";
@@ -37,6 +39,10 @@ import checkToken from '../controllers/checkToken.js'
 
 
 router.get("/", testController);
+
+//Contact
+router.get("/SelectContact", selectContact )
+router.delete("/DeleteContact/:id",deleteContact)
 router.post("/Contact", addContact);
 //Users
 router.post("/CreateUser", authMiddleware,createUser);

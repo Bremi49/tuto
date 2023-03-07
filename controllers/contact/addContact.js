@@ -1,4 +1,4 @@
-import { asyncQuery } from "../config/database.js"
+import { asyncQuery } from "../../config/database.js"
 
 export default async (req, res) => {
   const { name, mail, description, telephone } = req.body
@@ -26,11 +26,11 @@ export default async (req, res) => {
   const sql = "INSERT INTO Contact (name,mail,description,telephone) VALUES (?,?,?,?)"
   const paramsSql = [name, mail, description, telephone]
 
-  try {
-    const createContact = await asyncQuery(sql, paramsSql)
-    return { response: createContact }
-  } catch (err) {
-    console.log(err)
-    return { response: "Erreur lors de l'enregistrement" }
-  }
+try {
+  const createContact = await asyncQuery(sql, paramsSql)
+  return res.status(200).json({ response: createContact })
+} catch (err) {
+  console.log(err)
+  return res.status(500).json({ response: "Erreur lors de l'enregistrement" })
+}
 }
