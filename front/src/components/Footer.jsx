@@ -1,6 +1,8 @@
 import { FaFacebookSquare, FaInstagram} from 'react-icons/fa';
-const Footer =() =>{
-    return(
+
+const Footer = () => {
+
+  return (
     <footer>
       <div className="reseau">
         <div className="suivez">Suivez-nous sur les réseaux sociaux :</div>
@@ -28,10 +30,10 @@ const Footer =() =>{
         <div>Dimanche: 12h-13h45/ 19h-21h</div>
       </div>
       <div className="adresse">
-      <div>Adresse :</div>
+        <div>Adresse :</div>
         <a href="https://www.google.com/maps/search/?api=1&query=42 Rue du Maréchal Leclerc, 49400 Saumur" target="_blank" rel="noopener noreferrer">42 Rue du Maréchal Leclerc, 49400 Saumur</a>
       </div>
     </footer>
-        )
+  );
 }
 export default Footer

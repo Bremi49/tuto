@@ -38,9 +38,11 @@ const Contact = () => {
   };
 
   return (
-    <form onSubmit={submit}>
+    <form className="contact" onSubmit={submit}>
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
       {successMessage && <div style={{ color: "green" }}>{successMessage}</div>}
+      <h2>Pour nous contacter :</h2>
+      <p>Si vous souhaitez effectuer une réservation pour le restaurant, merci d’utiliser le formulaire dédié en <a href="/createReservation">cliquant-ici</a>, merci à vous.</p>
       <div>
         <label>Nom:</label>
         <input
@@ -81,16 +83,18 @@ const Contact = () => {
       </div>
 
       <div>
-        <label>Description:</label>
-        <textarea
-          name="description"
-          onChange={handleChange}
-          value={contact.description}
-          placeholder="Description"
-          maxLength="1000"
-          required
-        />
-      </div>
+          <label for="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            onChange={handleChange}
+            value={contact.description}
+            placeholder="Description"
+            maxLength="1000"
+            required
+          />
+    </div>
+
 
       <div>
         <input type="submit" value="Envoyer" />

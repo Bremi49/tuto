@@ -48,13 +48,18 @@ const Login = () => {
 
   return (
 
-    <form onSubmit={submit}>
+    <form className="login" onSubmit={submit} >
+    <div>
+    <label>Email:</label>
       <input type='email' name='mail' value={input.mail} onChange={handleChange} placeholder='mail' />
+      </div>
+      <div>
+      <label>Mot de passe:</label>
       <input type='password' name='mdp' value={input.mdp} onChange={handleChange} placeholder='password' />
+      </div>
       <input type="submit" />
       {error !== null && <p>{error}</p>}
     </form>
-
   );
 }
 

@@ -39,6 +39,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Deconnexion from "./components/Deconnexion";
 import Header from "./components/Header";
 import Footer from "./components/Footer"
+
 import "./style.css"
 
 
@@ -87,7 +88,7 @@ const App = () => {
                 <Route path="/CustomArticle" element={<PrivateRoute><CustomArticle/></PrivateRoute>}/>
                 <Route path="/CustomFood" element={<PrivateRoute><CustomFood/></PrivateRoute>}/>
             </Routes>
-            <Footer />
+            <Footer/>
         </BrowserRouter>
     )
 }
