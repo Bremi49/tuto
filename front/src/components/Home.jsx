@@ -30,10 +30,10 @@ useEffect(() => {
     }
    
     return(
-    <div className="acceuil">
+    <div>
       {home.map((article,i) => (
       article.id && (
-        <div key={i}>
+        <div key={i} className="acceuil">
           <h2>{article.name}</h2>
           <p>{article.description}</p>
           {article.url && (

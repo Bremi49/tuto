@@ -33,6 +33,9 @@ const Footer = () => {
         <div>Adresse :</div>
         <a href="https://www.google.com/maps/search/?api=1&query=42 Rue du Maréchal Leclerc, 49400 Saumur" target="_blank" rel="noopener noreferrer">42 Rue du Maréchal Leclerc, 49400 Saumur</a>
       </div>
+         <div className="mention-legal">
+            <a href="/MentionLegal">Mentions légales ©</a>
+        </div>
     </footer>
   );
 }

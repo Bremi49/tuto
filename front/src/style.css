@@ -52,15 +52,17 @@ header li:not(:last-child):after {
 footer {
   background-image: linear-gradient(to bottom, #000000, #161616);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
 }
-.reseau{
-    color:white;
-}
-.reseau ul {
 
+.reseau{
+  color:white;
+}
+
+.reseau ul {
   display: flex;
   margin: 0;
   padding: 0;
@@ -70,26 +72,61 @@ footer {
 .reseau ul li {
   margin-right: 1rem;
 }
-.adresse div{
+
+.adresse div {
   color:white;
-  text-align:center;
+  text-align: center;
   margin:1em;
 }
+
 .adresse a {
   text-decoration: none;
   color: white;
 }
 
+.horaire {
+  color:white;
+  margin-right: 1rem;
+}
+
 .horaire div:not(:last-child) {
   margin-bottom: 1em;
 }
-.horaire{
-    color:white;
+
+.suivez {
+  margin: 1em;
 }
 
-.suivez{
-  margin:1em;
+.mention-legal {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 1em;
+  flex-basis: 100%;
 }
+/*Mention Legal*/
+
+.MentionLegal {
+  background-color: beige;
+  color: black;
+  padding: 20px;
+}
+
+.MentionLegal h2 {
+  color: orange;
+  font-weight: bold;
+}
+
+.MentionLegal h3 {
+  color: orange;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.MentionLegal p {
+  margin: 10px 0;
+}
+
 
 /* ADMIN */
 
@@ -141,28 +178,31 @@ a:visited {
   color: white; /* Couleur des liens visités */
 }
 
-
+/*ArticleCustom*/
 .acceuil {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #2b2b2b, #ccc);
+  background-color: #fff;
 }
+
 .acceuil h2 {
   text-align: center;
-  color:#f7f7f7;
+  color: #2b2b2b;
 }
 
 .acceuil p {
-  flex: 1; /* Permet au texte de prendre tout l'espace restant */
-  text-align: right; /* Aligne le texte à droite */
+  text-align: center;
 }
 
-.acceuil img{
-  width:10em;
-  height:10em;
+.acceuil img {
+  display: block; /* pour centrer horizontalement */
+  margin: 0 auto; /* pour centrer verticalement */
+  padding-bottom:1rem;
+  width: 50%;
 }
+
 
 .selectImg img{
   width:10%;
@@ -312,4 +352,511 @@ text-decoration: none;
 
 .reservation a {
 color:#666;
+}
+
+/*CreateNourriture*/
+
+.createNourriture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.createNourriture input[type="text"],
+.createNourriture input[type="number"],
+.createNourriture select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+.createNourriture textarea {
+  width: 100%;
+  height: 200px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: none;
+}
+
+.createNourriture label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.createNourriture select {
+  background-position: right 10px center;
+  background-size: 12px 8px;
+  padding-right: 25px;
+}
+
+.createNourriture input[type="file"] {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.createNourriture input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.createNourriture input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.createNourriture .error-message {
+  color: red;
+}
+
+.createNourriture .success-message {
+  color: green;
+}
+
+/*CreateArticle*/
+
+.createArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.createArticle label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.createArticle label[for="name"] {
+  width: 150px;
+}
+
+.createArticle label[for="description"] {
+  width: 150px;
+}
+
+.createArticle label[for="publication_date"] {
+  width: 150px;
+}
+
+.createArticle label[for="avatar"] {
+  width: 150px;
+}
+
+.createArticle input[type="text"],
+.createArticle input[type="date"],
+.createArticle input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.createArticle textarea {
+  width: 100%;
+  height: 300px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: none;
+}
+
+.createArticle input[type="text"],
+.createArticle input[type="date"] {
+  width: calc(100% - 24px);
+}
+
+.createArticle input[type="file"] {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.createArticle input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.createArticle input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.createArticle .error-message {
+  color: red;
+}
+
+.createArticle .success-message {
+  color: green;
+}
+
+
+/*Article Modification-Suppression*/
+.ModificationArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ModificationArticle textarea {
+  width: 100%;
+  height: 200px; /* hauteur fixe de 200 pixels */
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: none; /* Empêche la redimension */
+}
+
+
+.ModificationArticle input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.ModificationArticle button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+.ModificationArticle button:hover {
+  background-color: #3e8e41;
+}
+
+.SuppressionArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  width: 100%;
+}
+
+.SuppressionArticle h2 {
+  text-align: center;
+  color: #333;
+}
+
+.SuppressionArticle p {
+  flex: 1;
+  text-align: right;
+}
+
+.SuppressionArticle img {
+  width: 10em;
+  height: 10em;
+}
+
+.selectImg img {
+  width: 100%;
+}
+
+/*DeleteReservation*/
+
+.DeleteReservation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.DeleteReservation li {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  max-width: 500px;
+  width: 50%; /* Définit la largeur à 50% */
+}
+
+.DeleteReservation h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff7f50;
+  margin-top: 0;
+}
+
+.DeleteReservation p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.DeleteReservation button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.DeleteReservation button:hover {
+  background-color: #3e8e41;
+}
+/*Custom plat*/
+.CustomFood {
+  margin: 0 auto;
+  max-width: auto;
+  text-align: center;
+}
+
+.CustomFood h2 {
+  margin: 2rem;
+  color: #FFC107;
+  border: none;
+  border-bottom: 1px solid #FFC107;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.CustomFood ul {
+  list-style: none;
+  margin: auto;
+  padding: 0;
+}
+
+.CustomFood li {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1 0 45%; /* Définit la largeur à 45% */
+}
+
+.CustomFood p {
+  margin: 1em 0;
+  line-height: 1.5;
+}
+
+.CustomFood img {
+  display: block;
+  margin: auto;
+  max-width: 200px;
+  height: auto;
+}
+
+.Food h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #FF8C00;
+}
+
+.Food {
+  max-width: 500px;
+  flex-basis: calc(50% - 20px); /* pour avoir 2 div.Food sur la même ligne */
+}
+
+.Food > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Food > ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+
+.Food li{
+  margin-bottom:3em;
+  margin-top:3em;
+}
+
+.Food p {
+  text-align: left;
+  line-height: 1.5;
+}
+
+.Food p:nth-child(2) {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.Food p:nth-child(3) {
+  font-weight: bold;
+}
+
+.Food p:nth-child(4) {
+  font-style: italic;
+}
+
+.Food:nth-child(odd) > div {
+  flex-direction: row-reverse;
+}
+
+.Food:nth-child(even) > div {
+  flex-direction: row;
+}
+
+
+
+.Food:nth-child(odd) li {
+  order: 1;
+}
+
+.Food:nth-child(even) li {
+  order: -1;
+}
+
+
+@media only screen and (max-width: 760px) { /* Par exemple pour un écran de 768px maximum */
+  header nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  header li {
+    margin: 0.5em 0;
+    text-align: center;
+    position: relative;
+  }
+  
+  header li:not(:last-child):after {
+    display: none;
+  }
+  
+    footer {
+    flex-direction: column;
+  }
+  
+  .reseau ul li {
+    margin-right: 0.5rem;
+  }
+  
+  .adresse div {
+    margin: 0.5em;
+  }
+  
+  .suivez {
+    margin: 0.5em;
+  }
+  
+  .mention-legal {
+    margin-top: 0.5em;
+  }
+  /* Footer */
+footer {
+flex-direction: column;
+align-items: center;
+}
+
+.reseau ul li {
+margin-right: 0.5rem;
+}
+
+.adresse div {
+margin: 0.5em;
+}
+
+.suivez {
+margin-top: 1em;
+}
+
+/* Mention Legal */
+.MentionLegal {
+padding: 10px;
+}
+
+.MentionLegal h2 {
+font-size: 1.5rem;
+}
+
+.MentionLegal h3 {
+font-size: 1.3rem;
+}
+
+.MentionLegal p {
+font-size: 0.9rem;
+}
+/* NAV/HEADER/FOOTER */
+ul {
+flex-direction: column; 
+align-items: center; 
+}
+
+
+ul li:first-child {
+margin-left: 0;
+}
+
+/* ADMIN */
+.admin ul {
+flex-direction: column;
+}
+
+.admin ul li {
+margin-left: 0; 
+padding: 0.5em;
+}
+
 }

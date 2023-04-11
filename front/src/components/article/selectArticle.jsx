@@ -85,7 +85,7 @@ const updateArticle = () => {
 
   return (
 
-    <div>
+    <div className="ModificationArticle">
       {articles.map((article) => (
   <div key={article.id}>
     {isEditing && editedArticle.id === article.id ? (
@@ -107,14 +107,15 @@ const updateArticle = () => {
       </div>
     ) : (
       article.id && (
-        <div>
+        <div className="SuppressionArticle">
           <h2>{article.name}</h2>
           <p>{article.description}</p>
           {article.url && (
             <div className="selectImg"><img src={`${BASE_URL}/img/${article.url}`} alt={article.caption} /></div>
           )}
-          <button onClick={() => deleteArticle(article.id)}>Supprimer</button>
           <button onClick={() => startEditing(article)}>Modifier</button>
+          <button onClick={() => deleteArticle(article.id)}>Supprimer</button>
+          
         </div>
       )
     )}

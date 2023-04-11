@@ -14,9 +14,6 @@ const Nav = ({ isAdmin, isLoggedIn }) => {
           <NavLink to="/CustomFood">Plat</NavLink>
         </li>
         <li>
-          <NavLink to="/CustomArticle">A propos</NavLink>
-        </li>
-        <li>
           <NavLink to="/Contact">Contact</NavLink>
         </li>
         {isLoggedIn && isAdmin && (

@@ -30,7 +30,6 @@ import SelectNourriture from "./components/nourriture/selectNourriture"
 import CreateCategorie from "./components/categorie/createCategorie"
 
 //Custom
-import CustomArticle from "./components/custom/article"
 import CustomFood from "./components/custom/food"
 
 //import Nav from "./components/Nav";
@@ -38,7 +37,8 @@ import Admin from "./components/Admin";
 import PrivateRoute from "./components/PrivateRoute";
 import Deconnexion from "./components/Deconnexion";
 import Header from "./components/Header";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import MentionLegal from "./components/MentionLegal"
 
 import "./style.css"
 
@@ -85,8 +85,8 @@ const App = () => {
                 
                 <Route path="/Deconnexion" element ={<PrivateRoute auth="admin"><Deconnexion /></PrivateRoute>} />
                 {/* Custom*/}
-                <Route path="/CustomArticle" element={<PrivateRoute><CustomArticle/></PrivateRoute>}/>
                 <Route path="/CustomFood" element={<PrivateRoute><CustomFood/></PrivateRoute>}/>
+                <Route path="/MentionLegal" element={<PrivateRoute><MentionLegal/></PrivateRoute>}/>
             </Routes>
             <Footer/>
         </BrowserRouter>

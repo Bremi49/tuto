@@ -86,7 +86,7 @@ const CreateArticle = () => {
       });
   };
 return (
-  <form onSubmit={submit} encType="multipart/form-data">
+  <form className="createArticle"onSubmit={submit} encType="multipart/form-data">
     {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
     {successMessage && <div style={{ color: "green" }}>{successMessage}</div>} 
     <label>

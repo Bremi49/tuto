@@ -46,15 +46,15 @@ const deleteReservation = (id) => {
 
   return (
 
-    <ul>
+    <ul className="DeleteReservation">
       {reservation.map((reservation) => (
           <li key={reservation.id}>
-          <h3>nom :{reservation.name}</h3>
-          <p>date :{reservation.date}</p>
-          <p>nombre client :{reservation.nombre_client}</p>
-          <p>mail du client :{reservation.mail}</p>
-          <p>telephone:{reservation.telephone}</p>
-          <p>description:{reservation.description}</p>
+          <h3>nom : {reservation.name}</h3>
+          <p>date : {reservation.date}</p>
+          <p>nombre client : {reservation.nombre_client} client(s)</p>
+          <p>mail du client : {reservation.mail}</p>
+          <p>telephone: {reservation.telephone}</p>
+          <p>description: {reservation.description}</p>
         <button onClick={() => deleteReservation(reservation.id)}>Supprimer</button>
         </li>
       ))}

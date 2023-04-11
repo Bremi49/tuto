@@ -47,24 +47,59 @@ const CustomFood = () => {
   }
   
   return (
-  <div>
-    {nourriture.map((item,i) => {
-    return(<div>
-            <ul>
-              <li key={item.id}>
-                <h2>{item.name}</h2>
-                <p>{item.description}</p>
-                <p>{item.price}€</p>
-                <p>{categories[item.id_categorie]}</p>
-                {item.images && (
-                  <img src={`${BASE_URL}/img/${item.images}`} alt={item.caption} />
-                )}
-              </li>
-            </ul>
-          </div>
-        )}
-        )}
-        </div>
-        )
+  <div className="CustomFood">
+    <h2>Entrée</h2>
+    {nourriture.filter(item => item.id_categorie === 1).map((item,i) => (
+      <div key={i}>
+        <ul  className="Food">
+          <li>
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+            <p>{item.price}€</p>
+            <p>{categories[item.id_categorie]}</p>
+            {item.images && (
+              <img src={`${BASE_URL}/img/${item.images}`} alt={item.caption} />
+            )}
+          </li>
+        </ul>
+      </div>
+    ))}
+    
+    <h2>Plat</h2>
+    {nourriture.filter(item => item.id_categorie === 2).map((item,i) => (
+      <div key={i}>
+        <ul  className="Food" >
+          <li>
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+            <p>{item.price}€</p>
+            <p>{categories[item.id_categorie]}</p>
+            {item.images && (
+              <img src={`${BASE_URL}/img/${item.images}`} alt={item.caption} />
+            )}
+          </li>
+        </ul>
+      </div>
+    ))}
+    
+    <h2>Dessert</h2>
+    {nourriture.filter(item => item.id_categorie === 3).map((item,i) => (
+      <div key={i}>
+        <ul  className="Food">
+          <li>
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+            <p>{item.price}€</p>
+            <p>{categories[item.id_categorie]}</p>
+            {item.images && (
+              <img src={`${BASE_URL}/img/${item.images}`} alt={item.caption} />
+            )}
+          </li>
+        </ul>
+      </div>
+    ))}
+  </div>
+);
+
 }
 export default CustomFood;
