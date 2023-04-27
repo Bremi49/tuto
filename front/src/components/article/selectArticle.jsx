@@ -41,7 +41,7 @@ const deleteArticle = (id) => {
         setErrorMessage("Erreur lors de la suppression de l'article");
     });
   };
-
+// Fonction pour gérer les changements de valeur des inputs lors de l'édition d'un article
 const handleInputChange = (event) => {
 const { name, value } = event.target;
     setEditedArticle({ ...editedArticle, [name]: value });

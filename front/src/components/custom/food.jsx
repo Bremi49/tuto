@@ -48,56 +48,65 @@ const CustomFood = () => {
   
   return (
   <div className="CustomFood">
-    <h2>Entrée</h2>
-    {nourriture.filter(item => item.id_categorie === 1).map((item,i) => (
-      <div key={i}>
-        <ul  className="Food">
-          <li>
-            <h3>{item.name}</h3>
+    <h1>Entrée</h1>
+    <ul  className="food-list">
+      {nourriture
+        .filter((item) => item.id_categorie === 1)
+        .map((item, i) => (
+          <li key={i}>
+            <h2>{item.name}</h2>
             <p>{item.description}</p>
             <p>{item.price}€</p>
             <p>{categories[item.id_categorie]}</p>
             {item.images && (
-              <img src={`${BASE_URL}/img/${item.images}`} alt={item.caption} />
+              <img
+                src={`${BASE_URL}/img/${item.images}`}
+                alt={item.name}
+              />
             )}
           </li>
-        </ul>
-      </div>
-    ))}
-    
-    <h2>Plat</h2>
-    {nourriture.filter(item => item.id_categorie === 2).map((item,i) => (
-      <div key={i}>
-        <ul  className="Food" >
-          <li>
-            <h3>{item.name}</h3>
+        ))}
+    </ul>
+
+    <h1>Plat</h1>
+    <ul  className="food-list">
+      {nourriture
+        .filter((item) => item.id_categorie === 2)
+        .map((item, i) => (
+          <li key={i}>
+            <h2>{item.name}</h2>
             <p>{item.description}</p>
             <p>{item.price}€</p>
             <p>{categories[item.id_categorie]}</p>
             {item.images && (
-              <img src={`${BASE_URL}/img/${item.images}`} alt={item.caption} />
+              <img
+                src={`${BASE_URL}/img/${item.images}`}
+                alt={item.name}
+              />
             )}
           </li>
-        </ul>
-      </div>
-    ))}
-    
-    <h2>Dessert</h2>
-    {nourriture.filter(item => item.id_categorie === 3).map((item,i) => (
-      <div key={i}>
-        <ul  className="Food">
-          <li>
-            <h3>{item.name}</h3>
+        ))}
+    </ul>
+
+    <h1>Dessert</h1>
+    <ul className="food-list">
+      {nourriture
+        .filter((item) => item.id_categorie === 3)
+        .map((item, i) => (
+          <li key={i}>
+            <h2>{item.name}</h2>
             <p>{item.description}</p>
             <p>{item.price}€</p>
             <p>{categories[item.id_categorie]}</p>
             {item.images && (
-              <img src={`${BASE_URL}/img/${item.images}`} alt={item.caption} />
+              <img
+                src={`${BASE_URL}/img/${item.images}`}
+                alt={item.name}
+              />
             )}
           </li>
-        </ul>
-      </div>
-    ))}
+        ))}
+    </ul>
   </div>
 );
 

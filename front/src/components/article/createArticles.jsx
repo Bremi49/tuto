@@ -3,18 +3,19 @@ import axios from "axios";
 import { BASE_URL } from "../../tools/constante.js";
 
 const CreateArticle = () => {
+  // Initialiser le state pour stocker les informations de l'article, les erreurs de validation et les messages d'erreur/succès
   const initialState = { name: "", description: "", publication_date: "" };
   const [article, setArticle] = useState(initialState);
   const [nameError, setNameError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-
+// Fonction pour gérer les modifications dans les champs du formulaire
   const handleChange = (e) => {
     const { name, value } = e.target;
     setArticle({ ...article, [name]: value });
   };
-
+// Fonction pour valider les entrées du formulaire
   const validateInput = () => {
     let isValid = true;
 
@@ -39,7 +40,7 @@ const CreateArticle = () => {
 
   const submit = (e) => {
     e.preventDefault();
-
+// Vérifier la validation des entrées
     if (!validateInput()) {
       return;
     }
@@ -87,8 +88,8 @@ const CreateArticle = () => {
   };
 return (
   <form className="createArticle"onSubmit={submit} encType="multipart/form-data">
-    {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-    {successMessage && <div style={{ color: "green" }}>{successMessage}</div>} 
+    {errorMessage && <div>{errorMessage}</div>}
+    {successMessage && <div>{successMessage}</div>} 
     <label>
       Nom de l'article:
       <input
@@ -99,7 +100,7 @@ return (
         maxLength="255"
         required
       />
-      {nameError && <div style={{ color: "red" }}>{nameError}</div>}
+      {nameError && <div>{nameError}</div>}
     </label>
     <label>
       Description de l'article:
@@ -111,7 +112,7 @@ return (
         required
       />
       {descriptionError && (
-        <div style={{ color: "red" }}>{descriptionError}</div>
+        <div>{descriptionError}</div>
       )}
     </label>
     <label>

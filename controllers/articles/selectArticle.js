@@ -1,6 +1,7 @@
 import { asyncQuery } from "../../config/database.js"
 
 export default async (req, res) => {
+  // Extraire l'identifiant "id" de l'article de l'objet "req.params"
   const { id } = req.params;
 
   try {
@@ -18,8 +19,10 @@ export default async (req, res) => {
     if (result.length === 0) {
       return res.status(404).send({ error: 'Aucun article trouvé' });
     } else if (id) {
+      // Si un identifiant d'article est fourni et qu'un article est trouvé, renvoyer cet article
       return res.status(200).send({ response: result[0] });
     } else {
+      // Sinon, renvoyer tous les articles trouvés
       return res.status(200).send({ response: result });
     }
   } catch (error) {

@@ -101,9 +101,9 @@ const [successMessage, setSuccessMessage] = useState("");
 
     return (
   <form onSubmit={submit} className="reservation">
-    {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-{successMessage && <div style={{ color: "green" }}>{successMessage}</div>}
-    <h2>Reservation:</h2>
+    {errorMessage && <div>{errorMessage}</div>}
+{successMessage && <div>{successMessage}</div>}
+    <h1>Réservation :</h1>
     <p>La réservation ne peut être faite que pendant les heures d'ouverture de 12h-14h et de 19h a 21h30 et du mardi au dimanche</p>
     <div>
       <label>Date:</label>

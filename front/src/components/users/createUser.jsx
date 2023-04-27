@@ -35,7 +35,7 @@ const CreateUser = () => {
 
   return (
     <form onSubmit={submit}>
-      {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+      {errorMessage && <div>{errorMessage}</div>}
       <input
         type="email"
         name="mail"

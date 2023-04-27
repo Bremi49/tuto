@@ -58,8 +58,8 @@ const CreateNourriture = () => {
   return (
 
     <form className="createNourriture"onSubmit={submit} encType="multipart/form-data">
-      {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-      {successMessage && <div style={{ color: "green" }}>{successMessage}</div>}
+      {errorMessage && <div>{errorMessage}</div>}
+      {successMessage && <div>{successMessage}</div>}
       <input type="text" name="name" onChange={handleChange} value={nourriture.name} placeholder="Nom du nourriture" maxLength="255" required/>
       <textarea name="description" onChange={handleChange} value={nourriture.description} placeholder="Description du nourriture" maxLength="1000" required/>
       <input type="number" name="price" onChange={handleChange} value={nourriture.price} placeholder="Prix du plat" maxLength ="4" required />

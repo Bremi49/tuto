@@ -44,7 +44,7 @@
     }
     
     return (
-        <ul>
+        <ul className="contactChange">
             {contacts.map((contact) => (
             <li key={contact.id}>
                 <h3>Nom : {contact.name}</h3>

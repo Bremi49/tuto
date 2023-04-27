@@ -38,69 +38,76 @@ const Contact = () => {
   };
 
   return (
-    <form className="contact" onSubmit={submit}>
-      {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-      {successMessage && <div style={{ color: "green" }}>{successMessage}</div>}
-      <h2>Pour nous contacter :</h2>
-      <p>Si vous souhaitez effectuer une réservation pour le restaurant, merci d’utiliser le formulaire dédié en <a href="/createReservation">cliquant-ici</a>, merci à vous.</p>
-      <div>
-        <label>Nom:</label>
-        <input
-          type="text"
-          name="name"
-          onChange={handleChange}
-          value={contact.name}
-          placeholder="Nom"
-          maxLength="127"
-          required
-        />
-      </div>
-
-      <div>
-        <label>Adresse e-mail:</label>
-        <input
-          type="email"
-          name="mail"
-          onChange={handleChange}
-          value={contact.mail}
-          placeholder="Adresse e-mail"
-          maxLength="170"
-          required
-        />
-      </div>
-
-      <div>
-        <label>Téléphone:</label>
-        <input
-          type="tel"
-          name="telephone"
-          onChange={handleChange}
-          value={contact.telephone}
-          placeholder="Téléphone"
-          maxLength="15"
-          required
-        />
-      </div>
-
-      <div>
-          <label for="description">Description:</label>
-          <textarea
-            id="description"
-            name="description"
-            onChange={handleChange}
-            value={contact.description}
-            placeholder="Description"
-            maxLength="1000"
-            required
-          />
+  <form className="contact" onSubmit={submit}>
+    {errorMessage && <div>{errorMessage}</div>}
+    {successMessage && <div>{successMessage}</div>}
+    <h1>Pour nous contacter :</h1>
+    <p>
+      Si vous souhaitez effectuer une réservation pour le restaurant, merci
+      d’utiliser le formulaire dédié en{" "}
+      <a href="/createReservation">cliquant-ici</a>, merci à vous.
+    </p>
+    <div>
+      <label htmlFor="name">Nom:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        onChange={handleChange}
+        value={contact.name}
+        placeholder="Nom"
+        maxLength="127"
+        required
+      />
     </div>
 
+    <div>
+      <label htmlFor="mail">Adresse e-mail:</label>
+      <input
+        type="email"
+        id="mail"
+        name="mail"
+        onChange={handleChange}
+        value={contact.mail}
+        placeholder="Adresse e-mail"
+        maxLength="170"
+        required
+      />
+    </div>
 
-      <div>
-        <input type="submit" value="Envoyer" />
-      </div>
-    </form>
-  );
+    <div>
+      <label htmlFor="telephone">Téléphone:</label>
+      <input
+        type="tel"
+        id="telephone"
+        name="telephone"
+        onChange={handleChange}
+        value={contact.telephone}
+        placeholder="Téléphone"
+        maxLength="15"
+        required
+      />
+    </div>
+
+    <div>
+      <label htmlFor="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        onChange={handleChange}
+        value={contact.description}
+        placeholder="Description"
+        maxLength="1000"
+        required
+      />
+    </div>
+
+    <div>
+      <input type="submit" value="Envoyer" />
+    </div>
+  </form>
+);
+
 };
 
 export default Contact;

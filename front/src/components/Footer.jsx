@@ -9,12 +9,12 @@ const Footer = () => {
         <ul>
           <li>
             <a href="https://www.facebook.com/BersanR" target="_blank" rel="noopener noreferrer">
-              <FaFacebookSquare />
+              <FaFacebookSquare className="facebook-logo"/>
             </a>
           </li>
           <li>
             <a href="https://www.instagram.com/l.instinct.saumur/" target="_blank" rel="noopener noreferrer">
-              <FaInstagram />
+              <FaInstagram className="instagram-logo"/>
             </a>
           </li>
         </ul>

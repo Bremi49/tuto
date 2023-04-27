@@ -27,15 +27,24 @@ const CreateCategorie = () => {
     });
   };
 
-  return (
-
-    <form onSubmit={submit}>
-      {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
-      <input type="text" name="name" onChange={handleChange} value={categorie.name} placeholder="Nom de la categorie" maxLength="50" />
-      <input type="submit" />
-    </form>
-
-  );
+ return (
+  <form onSubmit={submit}>
+    {errorMessage && <div>{errorMessage}</div>}
+    <label htmlFor="name">
+      Nom de la catégorie:
+      <input
+        type="text"
+        id="name"
+        name="name"
+        onChange={handleChange}
+        value={categorie.name}
+        placeholder="Nom de la catégorie"
+        maxLength="50"
+      />
+    </label>
+    <input type="submit" />
+  </form>
+);
 };
 
 export default CreateCategorie;

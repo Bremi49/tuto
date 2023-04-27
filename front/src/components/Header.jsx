@@ -35,13 +35,15 @@ const Header = () => {
   }, [])
 
   return (
-    <header>
-    <img src={headerImage} alt="Logo"/>
+  <header className="container">
+    <img src={headerImage} alt="Logo" />
     <h1>L'Instinct</h1>
-      {isAdmin && isLoggedIn && <Admin />}
+    {isAdmin && isLoggedIn && <Admin />}
+    <div className="nav-container">
       <Nav isAdmin={isAdmin} isLoggedIn={isLoggedIn} />
-    </header>
-  )
+    </div>
+  </header>
+)
 }
 
 export default Header
