@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../tools/constante.js";
 
@@ -26,14 +26,14 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={isLoading ? "loading-container" : ""}>
+    <section className={isLoading ? "loading-container" : ""}>
       {isLoading ? (
         <div className="loading"></div>
       ) : (
-        <div>
+        <article>
           {home.map((article, i) =>
             article.id && (
-              <div key={i} className="acceuil">
+              <section key={i} className="acceuil">
                 <h1 className="acceuilH1">{article.name}</h1>
                 <p>{article.description}</p>
                 {article.url && (
@@ -42,12 +42,12 @@ const Home = () => {
                     alt={article.caption}
                   />
                 )}
-              </div>
+              </section>
             )
           )}
-        </div>
+        </article>
       )}
-    </div>
+    </section>
   );
 };
 

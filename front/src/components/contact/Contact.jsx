@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../tools/constante.js";
 
 const Contact = () => {
+  const [isLoading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
   const initialState = {
     name: "",
     mail: "",
@@ -12,6 +16,7 @@ const Contact = () => {
   const [contact, setContact] = useState(initialState);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,9 +40,14 @@ const Contact = () => {
         setErrorMessage("Erreur lors de l'envoi du message");
         setSuccessMessage("");
       });
+      
   };
 
   return (
+    <section className={isLoading ? "loading-container" : ""}>
+      {isLoading ? (
+        <div className="loading"></div>
+      ) : (
   <form className="contact" onSubmit={submit}>
     {errorMessage && <div>{errorMessage}</div>}
     {successMessage && <div>{successMessage}</div>}
@@ -106,8 +116,10 @@ const Contact = () => {
       <input type="submit" value="Envoyer" />
     </div>
   </form>
+)}
+</section>
 );
-
+  
 };
 
 export default Contact;

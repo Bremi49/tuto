@@ -42,14 +42,15 @@ const CustomFood = () => {
       });
   }, []);
   
-  if (isLoading) {
-    return <h1>Chargement...</h1>;
-  }
-  
   return (
-  <div className="CustomFood">
+    <section className={isLoading ? "loading-container" : ""}>
+      {isLoading ? (
+        <div className="loading"></div>
+      ) : (
+  <section className="CustomFood">
+  <article>
     <h1>Entrée</h1>
-    <ul  className="food-list">
+    <ul className="food-list">
       {nourriture
         .filter((item) => item.id_categorie === 1)
         .map((item, i) => (
@@ -67,7 +68,8 @@ const CustomFood = () => {
           </li>
         ))}
     </ul>
-
+    </article>
+    <article>
     <h1>Plat</h1>
     <ul  className="food-list">
       {nourriture
@@ -87,7 +89,8 @@ const CustomFood = () => {
           </li>
         ))}
     </ul>
-
+    </article>
+    <article>
     <h1>Dessert</h1>
     <ul className="food-list">
       {nourriture
@@ -107,8 +110,9 @@ const CustomFood = () => {
           </li>
         ))}
     </ul>
-  </div>
-);
-
-}
+    </article>
+  </section>
+)}
+</section>
+)}
 export default CustomFood;

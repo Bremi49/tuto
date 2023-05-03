@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../tools/constante.js";
 
 const CreateReservation = () => {
+    const [isLoading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
   const initialState = { date: "", nombre_client: "", name: "", mail: "", telephone: "", description: "" };
   const [reservation, setReservation] = useState(initialState);
   const [errorMessage, setErrorMessage] = useState("");
@@ -100,55 +104,71 @@ const [successMessage, setSuccessMessage] = useState("");
     };
 
     return (
+      <section className={isLoading ? "loading-container" : ""}>
+      {isLoading ? (
+        <div className="loading"></div>
+      ) : (
   <form onSubmit={submit} className="reservation">
     {errorMessage && <div>{errorMessage}</div>}
 {successMessage && <div>{successMessage}</div>}
     <h1>Réservation :</h1>
     <p>La réservation ne peut être faite que pendant les heures d'ouverture de 12h-14h et de 19h a 21h30 et du mardi au dimanche</p>
     <div>
-      <label>Date:</label>
-      <input type="datetime-local" name="date" onChange={handleChange} value={reservation.date} min={minDate} maxLength="50" required />
+      <label htmlFor="date">Date:</label>
+      <input
+      id="date"
+      type="datetime-local" name="date" onChange={handleChange} value={reservation.date} min={minDate} maxLength="50" required />
       {errorMessage && !reservation.date && (
         <div style={{ color: "red" }}>La réservation ne peut être faite que pendant les heures d'ouverture de 12h-14h et de 19h a 21h30 et du mardi au dimanche midi.</div>
       )}
     </div>
 
     <div>
-      <label>Nombre de clients:</label>
-      <input type="number" name="nombre_client" onChange={handleChange} value={reservation.nombre_client} placeholder="Nombre de clients" maxLength="50" required />
+      <label htmlFor="number">Nombre de clients:</label>
+      <input 
+      id="number"
+      type="number" name="nombre_client" onChange={handleChange} value={reservation.nombre_client} placeholder="Nombre de clients" maxLength="50" required />
       {errorNumber && <div style={{ color: "red" }}>{errorNumber}</div>}
       {reservation.nombre_client > 10 && <div style={{ color: "red" }}>La réservation ne peut pas dépasser 10 personnes</div>}
     </div>
 
     <div>
-      <label>Nom:</label>
-      <input type="text" name="name" onChange={handleChange} value={reservation.name} placeholder="Nom" maxLength="50" required />
+      <label htmlFor="nom">Nom:</label>
+      <input
+      id="nom"
+      type="text" name="name" onChange={handleChange} value={reservation.name} placeholder="Nom" maxLength="50" required />
       {errorName && <div style={{ color: "red" }}>{errorName}</div>}
     </div>
 
     <div>
-      <label>Adresse e-mail:</label>
-      <input type="email" name="mail" onChange={handleChange} value={reservation.mail} placeholder="Adresse e-mail" maxLength="50" required />
+      <label htmlFor="mail">Adresse e-mail:</label>
+      <input 
+      id="mail"
+      type="email" name="mail" onChange={handleChange} value={reservation.mail} placeholder="Adresse e-mail" maxLength="50" required />
       {errorMail && <div style={{ color: "red" }}>{errorMail}</div>}
     </div>
 
     <div>
-      <label>Téléphone:</label>
-      <input type="tel" name="telephone" onChange={handleChange} value={reservation.telephone} placeholder="Téléphone" maxLength="10" required />
+      <label htmlFor="tel">Téléphone:</label>
+      <input 
+      id="tel"
+      type="tel" name="telephone" onChange={handleChange} value={reservation.telephone} placeholder="Téléphone" maxLength="10" required />
       {errorNumber && <div style={{ color: "red" }}>{errorNumber}</div>}
     </div>
 
     <div>
-      <label>Description:</label>
-      <textarea name="description" onChange={handleChange} value={reservation.description} placeholder="Description" maxLength="1000" />
+      <label htmlFor="Description">Description:</label>
+      <textarea 
+      id="Description" name="description" onChange={handleChange} value={reservation.description} placeholder="Description" maxLength="1000" />
     </div>
 
     <div>
       <input type="submit" value="Réserver" />
     </div>
   </form>
-);
-
+)}
+</section>
+)
 };
 
 export default CreateReservation;

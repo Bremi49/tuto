@@ -28,7 +28,7 @@ const Nav = ({ isAdmin, isLoggedIn }) => {
         <ul className={`nav-menu ${menuOpen ? "active" : ""}`}>
           <li className="nav-item">
             <NavLink to="/" className="nav-link" onClick={handleLinkClick}>
-              Acceuil
+              Accueil
             </NavLink>
           </li>
           <li className="nav-item">

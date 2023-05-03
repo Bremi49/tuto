@@ -33,6 +33,16 @@ const Header = () => {
       setIsLoggedIn(false)
     }
   }, [])
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    if (darkMode) {
+      document.documentElement.classList.remove("dark-mode");
+    } else {
+      document.documentElement.classList.add("dark-mode");
+    }
+  };
 
   return (
   <header className="container">
@@ -41,6 +51,17 @@ const Header = () => {
     {isAdmin && isLoggedIn && <Admin />}
     <div className="nav-container">
       <Nav isAdmin={isAdmin} isLoggedIn={isLoggedIn} />
+    </div>
+<div className="switch-container">
+      <label htmlFor="dark-mode-switch" className="switch">
+        <input
+          type="checkbox"
+          id="dark-mode-switch"
+          onChange={toggleDarkMode}
+          checked={darkMode}
+        />
+        <span className="slider"></span>
+      </label>
     </div>
   </header>
 )
